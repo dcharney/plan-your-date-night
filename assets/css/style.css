@@ -1,4 +1,6 @@
-
+html {
+    scroll-behavior: smooth;
+}
 body {
     font-family: 'Open Sans Light';
     color: white;
@@ -28,6 +30,7 @@ section {
 header {
     position: absolute;
     width: 100%;
+    z-index: 1;
 }
 
 header div {
@@ -43,6 +46,11 @@ header h1 {
 
 header h1, header h2 {
     padding: 30px;
+}
+
+header h2 a {
+    text-decoration: none;
+    color: white;
 }
 /* Main Header End */
 
@@ -64,19 +72,30 @@ header h1, header h2 {
     flex-direction: column;
     align-items: center;
 }
-
+/*
+    position: relative;
+    top: -2724px;
+    left: 360.5px;
+    list-style: none;
+    border-radius: 20px;
+    border-style: none;
+    width: 300px;
+    background-color: rgb(176 176 176 / 45%);
+    padding: 5px 0px 9px 12px;
+    margin-top: 25px;
+*/
 .search-section form input.search {
     outline: none;
     display: none;
     border-radius: 20px;
     border-style: none;
-    height: 25px;
     width: 300px;
     background-color: rgb(176 176 176 / 45%);
     color: white;
-    padding: 6px;
+    padding: 5px 0 5px 10px;
     margin: 10px;
     font-size: 20px;
+    font-family: inherit;
 }
 
 .search-section form input.search::placeholder {
@@ -87,7 +106,36 @@ header h1, header h2 {
     display: block;
 }
 
-.search-section form div {
+.search-section form #suggestions-wrapper {
+    border-radius: 20px;
+    border-style: none;
+    width: 300px;
+    background-color: rgb(176 176 176 / 45%);
+    margin-bottom: 5px;
+}
+
+.search-section form #suggestions-wrapper ul {
+    list-style: none;
+    position: inherit !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    padding: 0;
+    font-size: 20px;
+    margin: 0px;
+}
+
+.search-section form #suggestions-wrapper ul li {
+    padding: 5px 0 5px 10px;
+}
+
+.search-section form #suggestions-wrapper ul li:hover {
+    background-color: rgb(176 176 176 / 45%);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.search-section form .circle-indicator-wrapper {
     display: flex;
     justify-content: space-between;
     width: 50px;

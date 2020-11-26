@@ -2,11 +2,30 @@ var liquorSearchEl = $("#liquor-search");
 var proteinSearchEl = $("#protein-search");
 var circleIndicatorOneEl = $("#circle-indicator-1");
 var circleIndicatorTwoEl = $("#circle-indicator-2");
+var drinks = [];
 
 
+// push data from api to drinks array
+var suggestLiquor = function(data) {
+    data.drinks.forEach(element => {
+        drinks.push(element.strIngredient1);
+    });
+}
+
+var fetchLiquorIngredientList = function() {
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list")
+    .then(function(response) {
+        if(response.ok) {
+            response.json().then(function(data) {
+                suggestLiquor(data); // populate suggestions
+            });
+        } else {
+            console.log("no good baby");
+        }
+    });
+}
 
 var fetchLiquorSearch = function(keyword) {
-
     fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + keyword)
         .then(function(response) {
             if(response.ok) {
@@ -46,7 +65,18 @@ var submitHandler = function(event) {
         } else {
             fetchLiquorSearch(liquorSearchEl.val());
         }
+        // scroll to results section after search
+        scrollTo(0, $('#results-section').offset().top);
     }
+
 }
 
+// submit listener
 $("#search-form").on("submit", submitHandler);
+
+// auto complete liquor search
+fetchLiquorIngredientList();
+liquorSearchEl.autocomplete({ 
+    source: drinks,
+    appendTo: "#suggestions-wrapper"
+});
