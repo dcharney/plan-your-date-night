@@ -78,5 +78,6 @@ $("#search-form").on("submit", submitHandler);
 fetchLiquorIngredientList();
 liquorSearchEl.autocomplete({ 
     source: drinks,
-    appendTo: "#suggestions-wrapper"
+    appendTo: "#suggestions-wrapper",
+    autoFocus: true
 });

@@ -33,19 +33,17 @@ header {
     z-index: 1;
 }
 
-header div {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
 header h1 {
     font-size: 30px;
 }
 
 header h1, header h2 {
     padding: 30px;
+    font-family: 'Open Sans Light';
+}
+
+header h2 {
+    font-size: 25px;
 }
 
 header h2 a {
@@ -56,8 +54,6 @@ header h2 a {
 
 /* Search Section Start */
 .search-section {
-    display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
@@ -68,8 +64,6 @@ header h2 a {
 }
 
 .search-section form {
-    display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
@@ -124,15 +118,11 @@ header h2 a {
     cursor: pointer;
 }
 
-.search-section form .circle-indicator-wrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 50px;
-}
 
 .search-section form div .circle-indicator {
     width: 15px;
     height: 15px;
+    margin-right: 10px;
     border-radius: 50%;
     border-style: solid;
     border-width: 2px;
