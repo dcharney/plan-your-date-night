@@ -135,11 +135,19 @@ header h2 a {
 
 /* Search Section End */
 
-/* using to see the grid for test purposes*/
+/* Results Section Start */
+
+/* using to see the grid for test purposes
 .cell {
-    /*border: solid black 1px;*/
+    border: solid black 1px;
+}*/
+#results-section {
+    justify-content: center;
 }
 
+#results-section h2{
+    margin-left: .5vw;
+}
 
 .result-cell {
     padding: .5vw;
@@ -173,3 +181,5 @@ header h2 a {
 .result-container {
     padding: 5%;
 }
+
+/* Results Section End */
