@@ -72,18 +72,7 @@ header h2 a {
     flex-direction: column;
     align-items: center;
 }
-/*
-    position: relative;
-    top: -2724px;
-    left: 360.5px;
-    list-style: none;
-    border-radius: 20px;
-    border-style: none;
-    width: 300px;
-    background-color: rgb(176 176 176 / 45%);
-    padding: 5px 0px 9px 12px;
-    margin-top: 25px;
-*/
+
 .search-section form input.search {
     outline: none;
     display: none;
