@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    font-family: 'Open Sans Light';
+    font-family: sans-serif;
     color: white;
     margin: 0;
     font-weight: 100;
@@ -181,20 +181,27 @@ header h2 a {
     box-shadow: 0 0 5px black;
 }
 
-.result-container {
+.result-container, .shopping-container{
     padding: 5%;
 }
 
 /* Results Section End */
 
+/* Shopping-list Section Start */
+#shopping-container {
+    background-color: rgba(80, 80, 80, 0.411);
+    border-radius: 5px;
+
+}
+
 
 /* Recipe Section Start */
 
-#recipe-section {
+#recipe-section, #shopping-section {
     justify-content: center;
 }
 
-#recipe-section h1 {
+#recipe-section h1, #shopping-section h1 {
     text-align: center;
 }
 
