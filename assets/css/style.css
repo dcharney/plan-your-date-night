@@ -186,3 +186,53 @@ header h2 a {
 }
 
 /* Results Section End */
+
+
+/* Recipe Section Start */
+
+#recipe-section {
+    justify-content: center;
+}
+
+#recipe-section h1 {
+    text-align: center;
+}
+
+#recipe-section h2 {
+    margin-left: .5vw;
+}
+
+.recipe-cell {
+    padding: .5vw;
+    position: relative;
+}
+
+.recipe-bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: .5vw;
+}
+
+.recipe {
+    height: 100%;
+    width: 100%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.recipe:hover {
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 0 5px black;
+}
+
+.recipe-container {
+    padding: 5%;
+}
+
+/* Recipe Section End */
