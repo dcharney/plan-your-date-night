@@ -10,7 +10,7 @@ var drinks = [];
 var suggestMeal = function(data) {
     console.log(data);
     data.meals.forEach(element => {
-        meals.push(element.strIngredient1);
+        meals.push(element.strIngredient);
     });
 }
 
@@ -26,6 +26,7 @@ var fetchMealIngredientList = function() {
     .then(function(response) {
         if(response.ok) {
             response.json().then(function(data) {
+                console.log(data);
                 suggestMeal(data); // populate suggestions
             });
         } else {
