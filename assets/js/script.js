@@ -8,13 +8,14 @@ var drinks = [];
 
 // push data from api to food array
 var suggestMeal = function(data) {
+    console.log(data);
     data.meals.forEach(element => {
         meals.push(element.strIngredient1);
     });
 }
 
 //push data from api to drink array
-var suggestDrinks = function(data) {
+var suggestLiquor = function(data) {
     data.drinks.forEach(element => {
         drinks.push(element.strIngredient1);
     });
@@ -33,7 +34,7 @@ var fetchMealIngredientList = function() {
     });
 }
 
-/*var fetchLiquorIngredientList = function() {
+var fetchLiquorIngredientList = function() {
     fetch("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list")
     .then(function(response) {
         if(response.ok) {
@@ -44,7 +45,7 @@ var fetchMealIngredientList = function() {
             console.log("no good baby");
         }
     });
-}*/
+}
 
 var fetchMealSearch = function(keyword) {
     fetch("https://www.themealdb.com/api/json/v1/1/filter.php?i=" + keyword)
@@ -59,7 +60,7 @@ var fetchMealSearch = function(keyword) {
         });
 }
 
-/*var fetchLiquorSearch = function(keyword) {
+var fetchLiquorSearch = function(keyword) {
     fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + keyword)
         .then(function(response) {
             if(response.ok) {
@@ -70,7 +71,7 @@ var fetchMealSearch = function(keyword) {
                 console.log("no good baby");
             }
         });
-}*/
+}
 
 var submitHandler = function(event) {
     // prevent from refreshing page
@@ -119,9 +120,9 @@ proteinSearchEl.autocomplete({
 });
 
 // auto complete liquor search
-/*fetchLiquorIngredientList();
+fetchLiquorIngredientList();
 liquorSearchEl.autocomplete({ 
     source: drinks,
     appendTo: "#suggestions-wrapper",
     autoFocus: true
-});*/
+});
