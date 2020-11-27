@@ -3,12 +3,20 @@ var proteinSearchEl = $("#protein-search");
 var circleIndicatorOneEl = $("#circle-indicator-1");
 var circleIndicatorTwoEl = $("#circle-indicator-2");
 var meals = [];
+var drinks = [];
 
 
 // push data from api to food array
 var suggestMeal = function(data) {
     data.meals.forEach(element => {
         meals.push(element.strIngredient1);
+    });
+}
+
+//push data from api to drink array
+var suggestDrinks = function(data) {
+    data.drinks.forEach(element => {
+        drinks.push(element.strIngredient1);
     });
 }
 
@@ -25,6 +33,19 @@ var fetchMealIngredientList = function() {
     });
 }
 
+/*var fetchLiquorIngredientList = function() {
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list")
+    .then(function(response) {
+        if(response.ok) {
+            response.json().then(function(data) {
+                suggestLiquor(data); // populate suggestions
+            });
+        } else {
+            console.log("no good baby");
+        }
+    });
+}*/
+
 var fetchMealSearch = function(keyword) {
     fetch("https://www.themealdb.com/api/json/v1/1/filter.php?i=" + keyword)
         .then(function(response) {
@@ -37,6 +58,20 @@ var fetchMealSearch = function(keyword) {
             }
         });
 }
+
+/*var fetchLiquorSearch = function(keyword) {
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + keyword)
+        .then(function(response) {
+            if(response.ok) {
+                response.json().then(function(data) {
+                    console.log(data);
+                });
+            } else {
+                console.log("no good baby");
+            }
+        });
+}*/
+
 var submitHandler = function(event) {
     // prevent from refreshing page
     event.preventDefault()
@@ -48,11 +83,11 @@ var submitHandler = function(event) {
         circleIndicatorOneEl.removeClass("active");
 
         // adding visibility to second input and circle indicator and focus on input
-        proteinSearchEl.addClass("active");
+        liquorSearchEl.addClass("active");
         circleIndicatorTwoEl.addClass("active");
-        proteinSearchEl.focus();
+        liquorSearchEl.focus();
 
-    } else { // user is on first field(meal input)
+    } else { // user is on second field(liquor input)
         // check if user added protein and liquor before sending data
         if(!proteinSearchEl.val() || proteinSearchEl.val() == " ") {
             console.log("no meal ingredient entered");
@@ -82,3 +117,11 @@ proteinSearchEl.autocomplete({
     appendTo: "#suggestions-wrapper",
     autoFocus: true
 });
+
+// auto complete liquor search
+/*fetchLiquorIngredientList();
+liquorSearchEl.autocomplete({ 
+    source: drinks,
+    appendTo: "#suggestions-wrapper",
+    autoFocus: true
+});*/
