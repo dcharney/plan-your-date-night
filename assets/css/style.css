@@ -279,7 +279,24 @@ header h2 a {
     padding-right: 50px;
 }
 
-.save-section-card {
-    background-color: 
-    border:none;
+
+.circular-image {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 80%;
+    margin: 25px 25px 30px 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.food-source-link, .food-source {
+    padding-left: 230px;
+}
+
+#food-highlight-details, #drink-highlight-details{
+    padding-left: 50px;
+    padding-top: 75px;
+    line-height: 2;
 }
