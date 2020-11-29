@@ -181,11 +181,16 @@ header h2 a {
     box-shadow: 0 0 5px black;
 }
 
-.result-container, .shopping-container{
+.result-container,
+.shopping-container {
     padding: 5%;
 }
 
 /* Results Section End */
+
+
+
+
 
 /* Shopping-list Section Start */
 #shopping-container {
@@ -194,14 +199,18 @@ header h2 a {
 
 }
 
+/* Shopping-list Styles End
+
 
 /* Recipe Section Start */
 
-#recipe-section, #shopping-section {
+#recipe-section,
+#shopping-section {
     justify-content: center;
 }
 
-#recipe-section h1, #shopping-section h1 {
+#recipe-section h1,
+#shopping-section h1 {
     text-align: center;
 }
 
@@ -243,3 +252,34 @@ header h2 a {
 }
 
 /* Recipe Section End */
+
+
+/* Save-section Style Start */
+
+.save-section {
+    align-items: center;
+}
+
+.save-item-container .cell {
+    background-color: rgba(80, 80, 80, 0.411);
+}
+
+.save-item-container {
+    padding: 5px 75px 20px 75px;
+}
+
+#food-save {
+    text-align: center;
+    padding: 170px 20px 0px 20px;
+    border-radius: 25px;
+}
+
+#recipe-steps-container {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.save-section-card {
+    background-color: 
+    border:none;
+}
