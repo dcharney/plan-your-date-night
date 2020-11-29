@@ -199,6 +199,10 @@ header h2 a {
 
 }
 
+.shopping-list-container li {
+    font-size: 1.8em;
+}
+
 /* Shopping-list Styles End
 
 
@@ -266,6 +270,8 @@ header h2 a {
 
 .save-item-container {
     padding: 5px 75px 20px 75px;
+    border-radius: 25px;
+
 }
 
 #food-save {
@@ -300,3 +306,14 @@ header h2 a {
     padding-top: 75px;
     line-height: 2;
 }
+
+.cell-card {
+    border-radius: 25px 0 0 25px
+}
+
+.cell-details {
+    border-radius: 0 25px 25px 0;
+}
+
+
+/* Global Styles */
