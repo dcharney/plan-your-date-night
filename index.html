@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css' />
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Plan Your Date Night</title>
 </head>
+
 <body>
     <header>
         <div class="grid-x">
             <h1 class="cell small-9">Plan Your Date Night</h1>
-            <h2 id="recipe-book-btn" class="cell small-3"><a href="#recipe-book-section">Recipe Book</a></h2>
+            <h2 id="recipe-book-btn" class="cell small-3"><a href="#recipe-section">Recipe Book</a></h2>
         </div>
     </header>
 
@@ -20,8 +22,9 @@
         <section id="search-section" class="grid-y search-section">
             <h1> Find Recipes </h1>
             <form id="search-form" class="grid-y">
-                <input id="protein-search" class="search active" name="protein" type="text" autofocus="true" placeholder="Search Protein"/>
-                <input id="liquor-search" class="search" name="liquor" type="text" placeholder="Search Liquor"/>
+                <input id="protein-search" class="search active" name="protein" type="text" autofocus="true"
+                    placeholder="Search Protein" />
+                <input id="liquor-search" class="search" name="liquor" type="text" placeholder="Search Liquor" />
                 <input type="submit" style="display: none;"></button>
                 <!-- Wrapper to append the suggestions ul element -->
                 <div id="suggestions-wrapper"></div>
@@ -32,43 +35,328 @@
                 </div>
             </form>
             <!-- Inserting bg image -->
-            <div class="bg-img-wrapper"> 
+            <div class="bg-img-wrapper">
                 <img src="./assets/images/search-bg.png">
             </div>
         </section>
 
         <!-- Results Section -->
-        <section id="results-section">
-            <h1 class="section-title">Recipe Results</h1>
-
-            <!-- Food results (left side) -->
-            <div id="food-results" class="food-results">
-
-            </div>
-
-            <!-- Drink results (right side)-->
-            <div id="drink-results" class="drink-results">
-
+        <section id="results-section" class="grid-y">
+            <div class="grid-container result-container">
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell">
+                        <h1>Recipe Results</h1>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell large-6 result-container">
+                        <h2> Food</h2>
+                        <div class="grid-container-fluid">
+                            <div class="grid-x">
+                                <div class="cell large-4 result-cell">
+                                    <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
+                                    <div class="result-bg">
+                                        <h4 class="result">Option 1</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 result-cell">
+                                    <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
+                                    <div class="result-bg">
+                                        <h4 class="result">Option 1</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 result-cell">
+                                    <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
+                                    <div class="result-bg">
+                                        <h4 class="result">Option 1</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-x">
+                                <div class="cell large-4 result-cell">
+                                    <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
+                                    <div class="result-bg">
+                                        <h4 class="result">Option 1</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 result-cell">
+                                    <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
+                                    <div class="result-bg">
+                                        <h4 class="result">Option 1</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 result-cell">
+                                    <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
+                                    <div class="result-bg">
+                                        <h4 class="result">Option 1</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell large-6 result-container">
+                        <h2> Drink</h2>
+                        <div class="grid-container-fluid">
+                            <div class="grid-x">
+                                <div class="cell large-4 result-cell">
+                                    <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" />
+                                    <div class="result-bg">
+                                        <h4 class="result">Option 1</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 result-cell">
+                                    <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" />
+                                    <div class="result-bg">
+                                        <h4 class="result">Option 1</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 result-cell">
+                                    <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" />
+                                    <div class="result-bg">
+                                        <h4 class="result">Option 1</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-x">
+                                <div class="cell large-4 result-cell">
+                                    <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" />
+                                    <div class="result-bg">
+                                        <h4 class="result">Option 1</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 result-cell">
+                                    <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" />
+                                    <div class="result-bg">
+                                        <h4 class="result">Option 1</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 result-cell">
+                                    <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" />
+                                    <div class="result-bg">
+                                        <h4 class="result">Option 1</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Inserting bg image -->
-            <div class="bg-img-wrapper"> 
+            <div class="bg-img-wrapper">
                 <img src="./assets/images/results-bg.png">
             </div>
         </section>
+        <!-- End Results Section -->
+
+        <!-- Food Highlight Section -->
+        <section id="save-section" class="grid-y">
+            <div class="cell" id="food-save">
+                <h1>Insert Food Name</h1>
+            </div>
+            <div class="save-item-container cell-container cell grid-x">
+                <div class="cell cell-card large-4">
+                    <div class="circular-image" id="food-highlight-img">
+                        <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
+                    </div>
+                    <h4 class="food-source-link">Link</h4>
+                    <p class="food-source">Source</p>
+                </div>
+                <div class="cell cell-details large-8" id="food-highlight-details"> Lorem ipsum dolor sit, amet consectetur
+                    adipisicing elit. Dolor vero aut delectus magni dolorum, molestiae cumque? Repellendus laborum harum
+                    inventore nihil recusandae ipsam, temporibus dolorum accusamus enim asperiores alias iusto! Lorem
+                    ipsum dolor sit amet consectetur adipisicing elit. Maiores, est! Aliquam sapiente facilis blanditiis
+                    eos cumque possimus unde consectetur adipisci rem, fuga, inventore alias dolorem distinctio iure
+                    sunt nulla nisi? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem dicta reiciendis
+                    nihil corporis hic harum, error nesciunt soluta quisquam commodi quibusdam minus distinctio qui
+                    molestiae! Consequuntur fugit tenetur dolorum consequatur. Lorem ipsum dolor sit, amet consectetur
+                    adipisicing elit. Molestias quam consequuntur, qui nemo neque quas id iusto. Tempora a, temporibus
+                    ducimus unde eveniet repellendus blanditiis iste modi officia laboriosam ea! </div>
+            </div>
+
+
+            <!-- Inserting bg image -->
+            <div class="bg-img-wrapper">
+                <img src="./assets/images/results-bg.png">
+            </div>
+
+        </section>
+
+        <!-- Drink Highlight Section -->
+        <section id="save-section" class="grid-y">
+            <div class="cell" id="food-save">
+                <h1>Insert Drink Name</h1>
+            </div>
+            <div class="save-item-container grid-x">
+                <div class="cell cell-card large-4">
+                    <div class="circular-image" id="drink-highlight-img">
+                        <img src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                    </div>
+                    <h4 class="food-source-link">Link</h4>
+                    <p class="food-source">Source</p>
+                </div>
+                <div class="cell cell-details large-8" id="drink-highlight-details"> Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Doloremque, ipsum aliquid magnam accusamus vitae doloribus nulla nam, corrupti
+                    pariatur ipsa beatae quae nesciunt natus, velit cumque fuga quam maxime tempore. Lorem ipsum dolor
+                    sit, amet consectetur adipisicing elit. Pariatur maxime esse modi obcaecati in sed, perspiciatis
+                    atque, asperiores cum eveniet at necessitatibus reprehenderit maiores quod, corporis mollitia
+                    aperiam cupiditate doloremque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+                    doloremque consectetur sed provident est! Omnis voluptatibus, tempore iste, quibusdam sequi tempora
+                    maiores nemo, obcaecati sint quae veniam. Autem, eligendi tempora.</div>
+            </div>
+
+
+            <!-- Inserting bg image -->
+            <div class="bg-img-wrapper">
+                <img src="./assets/images/results-bg.png">
+            </div>
+
+        </section>
+
 
         <!-- Shopping List Section -->
-        <section id="shopping-list-section">
+        <section id="shopping-section" class="grid-y">
+
+            <div class="grid-container shopping-container">
+                <h1>Shopping List</h1>
+                <div id="shopping-container" class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell shopping-list">
+                        <h1> Use the "li" in id="shopping-list" container to insert the shopping list items. </h1>
+                        <ul class="shopping-list-container">
+                            <li> 1. eggs </li>
+                            <li> 2. milk </li>
+                            <li> 3. rice </li>
+                            <li> 4. Beef </li>
+                            <li> 5. etc. </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inserting bg image -->
+            <div class="bg-img-wrapper">
+                <img src="./assets/images/results-bg.png">
+            </div>
 
         </section>
 
         <!-- Recipe Book Section -->
-        <section id="recipe-book-section">
-
+        <section id="recipe-section" class="grid-y">
+            <div class="grid-container result-container">
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell">
+                        <h1>Recipe Book</h1>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell large-6 recipe-container">
+                        <h2> Foods Saved</h2>
+                        <div class="grid-container-fluid">
+                            <div class="grid-x">
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 1</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 2</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 3</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-x">
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 4</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 5</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 6</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell large-6 recipe-container">
+                        <h2> Drinks Saved</h2>
+                        <div class="grid-container-fluid">
+                            <div class="grid-x">
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 1</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 2</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 3</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-x">
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 4</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 5</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 6</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <!-- Inserting bg image -->
-            <div class="bg-img-wrapper"> 
+            <div class="bg-img-wrapper">
                 <img src="./assets/images/recipes-bg.png">
             </div>
         </section>
@@ -78,4 +366,5 @@
         <script src="./assets/js/script.js"></script>
     </main>
 </body>
+
 </html>
