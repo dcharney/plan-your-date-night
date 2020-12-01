@@ -1,6 +1,7 @@
-html {
+* {
     scroll-behavior: smooth;
 }
+
 body {
     font-family: 'Open Sans Light';
     color: white;
@@ -9,9 +10,16 @@ body {
 }
 
 /* Bg image(s) */
+main {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
 section {
     position: relative;
     height: 100vh;
+    scroll-snap-align: start;
 }
 
 .bg-img-wrapper {

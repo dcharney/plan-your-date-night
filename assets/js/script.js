@@ -1,9 +1,9 @@
+var mainEl = $("main");
 var liquorSearchEl = $("#liquor-search");
 var proteinSearchEl = $("#protein-search");
 var circleIndicatorOneEl = $("#circle-indicator-1");
 var circleIndicatorTwoEl = $("#circle-indicator-2");
 var drinks = [];
-
 
 // push data from api to drinks array
 var suggestLiquor = function(data) {
@@ -66,9 +66,9 @@ var submitHandler = function(event) {
             fetchLiquorSearch(liquorSearchEl.val());
         }
         // scroll to results section after search
-        scrollTo(0, $('#results-section').offset().top);
+        mainEl[0].scrollTo(0, $('#results-section').offset().top);
     }
-
+    
 }
 
 // submit listener
@@ -81,3 +81,12 @@ liquorSearchEl.autocomplete({
     appendTo: "#suggestions-wrapper",
     autoFocus: true
 });
+
+
+var formSubmitHandlerTest = function(event) {
+    var hash = $("#results-section");
+    hash[0].scrollIntoView();
+}
+
+var testButtonEl = $("#test");
+testButtonEl.click(formSubmitHandlerTest);
