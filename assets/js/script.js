@@ -76,7 +76,7 @@ $("#search-form").on("submit", submitHandler);
 
 // auto complete liquor search
 fetchLiquorIngredientList();
-liquorSearchEl.autocomplete({ 
+liquorSearchEl.autocomplete({
     source: drinks,
     appendTo: "#suggestions-wrapper",
     autoFocus: true
