@@ -2,6 +2,8 @@ var liquorSearchEl = $("#liquor-search");
 var proteinSearchEl = $("#protein-search");
 var circleIndicatorOneEl = $("#circle-indicator-1");
 var circleIndicatorTwoEl = $("#circle-indicator-2");
+
+var drinkResultsEl = $("#drink-results");
 var drinks = [];
 
 
@@ -12,6 +14,41 @@ var suggestLiquor = function(data) {
     });
 }
 
+// show drink results for liquor searched
+var drinkResults = function(data) {
+    data.drinks.forEach(element => {
+        // cell wrapper for individual drinks
+        var cellDiv = document.createElement("div");
+        // bg img in wrapper
+        var img = document.createElement("img");
+        // div wrapper for title/drink name
+        var h6Div = document.createElement("div");
+        // title/ drink name
+        var h6 = document.createElement("h6");
+
+        // add classes needed to elements
+        $(cellDiv).addClass("cell large-4 result-cell");
+        $(h6Div).addClass("result-bg");
+        $(h6).addClass("result");
+
+        // add data-img
+        $(img).attr("src", element.strDrinkThumb);
+        // add text data-title of drink
+        $(h6).text(element.strDrink);
+        // set drink id to cell id
+        $(cellDiv).attr("id", element.idDrink);
+
+        
+        // put h4 in h4 wrapper
+        h6Div.append(h6);
+        // put h4 and img in cell
+        cellDiv.append(img, h6Div);
+        // append cell to results element
+        drinkResultsEl.append(cellDiv)
+    });
+}
+
+// fetch list of ingrediants/liquors to add to suggestion
 var fetchLiquorIngredientList = function() {
     fetch("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list")
     .then(function(response) {
@@ -25,12 +62,14 @@ var fetchLiquorIngredientList = function() {
     });
 }
 
+// fetch the drinks for the liquor that the user searched
 var fetchLiquorSearch = function(keyword) {
     fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + keyword)
         .then(function(response) {
             if(response.ok) {
                 response.json().then(function(data) {
-                    console.log(data);
+                    // run drink results for searched liquor; function
+                    drinkResults(data);
                 });
             } else {
                 console.log("no good baby");
