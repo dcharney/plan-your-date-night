@@ -164,6 +164,7 @@ header h2 a {
 .result-cell {
     padding: .5vw;
     position: relative;
+    width: 50%;
 }
 
 .result-bg {
