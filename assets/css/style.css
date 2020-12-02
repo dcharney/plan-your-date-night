@@ -271,6 +271,9 @@ header h2 a {
 
 
 /* Save-section Style Start */
+.reveal-overlay {
+    backdrop-filter: blur(5px);
+}
 
 .modal {
     background-color: transparent;
@@ -316,8 +319,7 @@ header h2 a {
 }
 
 #food-highlight-details, #drink-highlight-details{
-    padding-left: 50px;
-    padding-top: 75px;
+    padding: 50px;
     line-height: 2;
 }
 

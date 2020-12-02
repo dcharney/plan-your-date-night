@@ -54,28 +54,36 @@ var openDrinkModal = function(data) {
     var category = dataInfo.strCategory;
     var youtube = dataInfo.strVideo ? data.strVideo : ""; // if video link available show other wise set to empty
     var alcohol = dataInfo.strAlcoholic;
-    var glassType = dataInfo.strGlass;
+    var glass = dataInfo.strGlass;
     var instructions = dataInfo.strInstructions;
     var img = dataInfo.strDrinkThumb;
     var ingredients = [];
 
-    // Filtering through the objects to find ingredients and put their values in an array
+    // Filtering through the objects to find list of ingredients and put their values in an array
     for(var i = 0; i < 15; i++) { // ingredients list goes to 15 max in api
         if(dataInfo["strIngredient"+i]){
-            ingredients.push(dataInfo["strIngredient"+i]);
+            ingredients.push(" " + dataInfo["strIngredient"+i]); //added (" " + ) to add spaces after ingredient item
         };
     }
-    console.log(
-        drinkName,
-        category,
-        youtube,
-        alcohol,
-        glassType,
-        instructions,
-        img,
-        ingredients
-    );
 
+    // update drink name in modal
+    $("#drink-name").text(drinkName);
+    // update drink details: add category, alchohol, glass, instructions, ingredients
+    $("#drink-highlight-details").html(
+        "<p>Category: "+ category + "</p>" +
+        "<br>" +
+        "<p>Alcohol: "+ alcohol + "</p>" +
+        "<br>" +
+        "<p>Glass: "+ glass + "</p>" +
+        "<br>" +
+        "<p>Instructions: "+ instructions + "</p>" +
+        "<br>" +
+        "<p>Ingredients: "+ ingredients + "</p>"
+    );
+    
+    // update img
+    $("#drink-highlight-img").html("<img src='"+img+"'/>");
+    // open this drink modal 
     var modal = new Foundation.Reveal($('#drink-modal'));
     modal.open();
 }
@@ -164,6 +172,7 @@ var drinkClicked = function(event) {
     // get id (unique drink id needed for api search)
     var idDrink = $(drink).attr("id");
 
+    // fetch drink clicked
     fetchDrinkInfo(idDrink);
 }
 
