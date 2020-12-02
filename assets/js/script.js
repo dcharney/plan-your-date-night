@@ -75,6 +75,9 @@ var openDrinkModal = function(data) {
         img,
         ingredients
     );
+
+    var modal = new Foundation.Reveal($('#drink-modal'));
+    modal.open();
 }
 
 // fetch list of ingrediants/liquors to add to suggestion
