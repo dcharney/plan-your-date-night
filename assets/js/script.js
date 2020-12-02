@@ -48,6 +48,35 @@ var drinkResults = function(data) {
     });
 }
 
+var openDrinkModal = function(data) {
+    var dataInfo = data.drinks[0];
+    var drinkName = dataInfo.strDrink;
+    var category = dataInfo.strCategory;
+    var youtube = dataInfo.strVideo ? data.strVideo : ""; // if video link available show other wise set to empty
+    var alcohol = dataInfo.strAlcoholic;
+    var glassType = dataInfo.strGlass;
+    var instructions = dataInfo.strInstructions;
+    var img = dataInfo.strDrinkThumb;
+    var ingredients = [];
+
+    // Filtering through the objects to find ingredients and put their values in an array
+    for(var i = 0; i < 15; i++) { // ingredients list goes to 15 max in api
+        if(dataInfo["strIngredient"+i]){
+            ingredients.push(dataInfo["strIngredient"+i]);
+        };
+    }
+    console.log(
+        drinkName,
+        category,
+        youtube,
+        alcohol,
+        glassType,
+        instructions,
+        img,
+        ingredients
+    );
+}
+
 // fetch list of ingrediants/liquors to add to suggestion
 var fetchLiquorIngredientList = function() {
     fetch("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list")
@@ -76,6 +105,22 @@ var fetchLiquorSearch = function(keyword) {
             }
         });
 }
+
+// fetch clicked drink from results
+var fetchDrinkInfo = function(idDrink) {
+    // search by id
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + idDrink)
+        .then(function(response) {
+            if(response.ok) {
+                response.json().then(function(data) {
+                    openDrinkModal(data);
+                });
+            } else {
+                console.log("no good baby");
+            }  
+        });
+}
+
 var submitHandler = function(event) {
     // prevent from refreshing page
     event.preventDefault()
@@ -110,6 +155,15 @@ var submitHandler = function(event) {
 
 }
 
+var drinkClicked = function(event) {
+    // find drinks container
+    var drink = $(event.target).closest(".result-cell");
+    // get id (unique drink id needed for api search)
+    var idDrink = $(drink).attr("id");
+
+    fetchDrinkInfo(idDrink);
+}
+
 // submit listener
 $("#search-form").on("submit", submitHandler);
 
@@ -120,3 +174,6 @@ liquorSearchEl.autocomplete({
     appendTo: "#suggestions-wrapper",
     autoFocus: true
 });
+
+// drink selected listener
+$(drinkResultsEl).on("click", drinkClicked);
