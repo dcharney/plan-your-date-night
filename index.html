@@ -39,39 +39,231 @@
 
         <!-- Results Section -->
         <section id="results-section">
-            <!-- Food results (left side) -->
-            <div id="meal-results" class="meal-results">
+            <div class="grid-container result-container">
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell">
+                        <h1>Recipe Results</h1>
+                    </div>
+                </div>
+                <div class="food-drinks-wrapper grid-x grid-padding-x grid-padding-y">
+                    <div class="cell large-6 result-container">
+                        <h2> Food</h2>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="meal-results" class="grid-x results">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell large-6 result-container">
+                        <h2> Drink</h2>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="drink-results" class="grid-x results">
+                            </div>
+                        </div>
+                    </div>
+                </div>    
             </div>
-
-            <!-- Drink results (right side)-->
-            <div id="drink-results" class="drink-results">
-
-            </div>
-
+            
             <!-- Inserting bg image -->
             <div class="bg-img-wrapper"> 
                 <img src="./assets/images/results-bg.png">
             </div>
         </section>
+        <!--end of results-->
+
+        <!-- Food Highlight Section -->
+        <section id="meal-modal" class="grid-y large reveal">
+            <div class="cell modal-title">
+                <h1>Insert Food Name</h1>
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="save-item-container cell-container cell grid-x">
+                <div class="cell cell-card large-4">
+                    <div class="circular-image" id="food-highlight-img">
+                        <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
+                    </div>
+                    <h4 class="meal-source-link">Link</h4>
+                    <p class="meal-source">Source</p>
+                </div>
+                <div class="cell cell-details large-8" id="meal-highlight-details"> Lorem ipsum dolor sit, amet consectetur
+                    adipisicing elit.</div>
+            </div>
+        </section>
+        
+         <!-- Drink Highlight Section -->
+        <section id="drink-modal" class="modal grid-y large reveal" data-reveal>
+            <div class="cell modal-title">
+                <h1 id="drink-name">Insert Drink Name</h1>
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>            
+            </div>
+            <div class="save-item-container grid-x">
+                <div class="cell cell-card large-4">
+                    <div class="circular-image" id="drink-highlight-img">
+                        <img src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                    </div>
+                </div>    
+                <div class="cell cell-details large-8" id="drink-highlight-details"> Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit.</div>
+            </div>
+        </section>
 
         <!-- Shopping List Section -->
-        <section id="shopping-list-section">
+        <section id="shopping-section" class="grid-y">
+
+            <div class="grid-container shopping-container">
+                <h1>Shopping List</h1>
+                <div id="shopping-container" class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell shopping-list">
+                        <h1> Use the "li" in id="shopping-list" container to insert the shopping list items. </h1>
+                        <ul class="shopping-list-container">
+                            <li> 1. eggs </li>
+                            <li> 2. milk </li>
+                            <li> 3. rice </li>
+                            <li> 4. Beef </li>
+                            <li> 5. etc. </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inserting bg image -->
+            <div class="bg-img-wrapper">
+                <img src="./assets/images/results-bg.png">
+            </div>
 
         </section>
 
         <!-- Recipe Book Section -->
-        <section id="recipe-book-section">
-
+        <section id="recipe-section" class="grid-y">
+            <div class="grid-container result-container">
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell">
+                        <h1>Recipe Book</h1>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell large-6 recipe-container">
+                        <h2> Foods Saved</h2>
+                        <div class="grid-container-fluid">
+                            <div class="grid-x">
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 1</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 2</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 3</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-x">
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 4</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 5</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 6</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell large-6 recipe-container">
+                        <h2> Drinks Saved</h2>
+                        <div class="grid-container-fluid">
+                            <div class="grid-x">
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 1</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 2</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 3</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-x">
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 4</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 5</h4>
+                                    </div>
+                                </div>
+                                <div class="cell large-4 recipe-cell">
+                                    <img
+                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                                    <div class="recipe-bg">
+                                        <h4 class="recipe"> 6</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <!-- Inserting bg image -->
-            <div class="bg-img-wrapper"> 
+            <div class="bg-img-wrapper">
                 <img src="./assets/images/recipes-bg.png">
             </div>
         </section>
 
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.core.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.mediaQuery.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.touch.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.keyboard.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.reveal.min.js'></script>
         <script src="./assets/js/script.js"></script>
     </main>
 </body>

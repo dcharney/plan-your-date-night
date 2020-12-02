@@ -9,7 +9,7 @@ var drinks = [];
 
 // push data from api to food array
 var suggestMeal = function(data) {
-    console.log(data);
+    
     data.meals.forEach(element => {
         meals.push(element.strIngredient);
     });
@@ -27,7 +27,7 @@ var fetchMealIngredientList = function() {
     .then(function(response) {
         if(response.ok) {
             response.json().then(function(data) {
-                console.log(data);
+                
                 suggestMeal(data); // populate suggestions
             });
         } else {
@@ -112,7 +112,7 @@ var submitHandler = function(event) {
 
 //push meal array into results container
 var mealResults = function(data) {
-    data.meals.forEach(element => {
+        data.meals.forEach(element => {
         //wrapper for ind. meals
         var singleMealDiv = document.createElement("div");
         //bg img
@@ -146,6 +146,55 @@ var mealResults = function(data) {
         //could we use a modal once clicking on a recipe to display ingredients or recipe and give close button option and recipe book option?
     });
 }
+
+// fetch clicked meal from results
+var fetchMealInfo = function(idMeal) {
+    // search by id
+    fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + idMeal)
+        .then(function(response) {
+            console.log(response);
+            if(response.ok) {
+                response.json().then(function(data) {
+                    openMealModal(data);
+                });
+            } else {
+                console.log("no good baby");
+            }  
+        });
+}
+
+var openMealModal = function(data) {
+    var dataInfo = data.meals[0];
+    var mealName = dataInfo.strMeal;
+    var instructions = dataInfo.strInstructions;
+    var img = dataInfo.strMealThumb;
+    var ingredients = [];
+
+    // Filtering through the objects to find ingredients and put their values in an array
+    for(var i = 0; i < 15; i++) { // ingredients list goes to 15 max in api
+        if(dataInfo["strIngredient"+i]){
+            ingredients.push(dataInfo["strIngredient"+i]);
+        };
+    }
+    console.log(
+        mealName,
+        instructions,
+        img,
+        ingredients
+    );
+
+    var modal = new Foundation.Reveal($('#meal-modal'));
+    modal.open();
+}
+
+var mealClicked = function(event) {
+     // find meals container
+    var meal = $(event.target).closest(".result-cell");
+    // get id (unique meal id needed for api search)
+    var idMeal = $(meal).attr("id");
+
+    fetchMealInfo(idMeal);
+}
  
 
 // submit listener
@@ -166,3 +215,6 @@ liquorSearchEl.autocomplete({
     appendTo: "#suggestions-wrapper",
     autoFocus: true
 });
+
+// meal selected listener
+$(mealResultsEl).on("click", mealClicked);
