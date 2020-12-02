@@ -126,7 +126,7 @@ var mealResults = function(data) {
         $(singleMealDiv).addClass("cell large-4 result-cell");
         $(mealHeader).addClass("result-bg");
         $(mealTitle).addClass("result");
-        //$(mealImg).addClass("thumbnail");
+       
 
         // add data-img of meal
         $(mealImg).attr("src", element.strMealThumb);
