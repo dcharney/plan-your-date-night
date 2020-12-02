@@ -3,6 +3,7 @@ var proteinSearchEl = $("#protein-search");
 var circleIndicatorOneEl = $("#circle-indicator-1");
 var circleIndicatorTwoEl = $("#circle-indicator-2");
 var meals = [];
+var mealResultsEl = $("#meal-results");
 var drinks = [];
 
 
@@ -53,7 +54,7 @@ var fetchMealSearch = function(keyword) {
         .then(function(response) {
             if(response.ok) {
                 response.json().then(function(data) {
-                    console.log(data);
+                    mealResults(data);
                 });
             } else {
                 console.log("not feeling it...");
@@ -108,6 +109,44 @@ var submitHandler = function(event) {
     }
 
 }
+
+//push meal array into results container
+var mealResults = function(data) {
+    data.meals.forEach(element => {
+        //wrapper for ind. meals
+        var singleMealDiv = document.createElement("div");
+        //bg img
+        var mealImg = document.createElement("img");
+        //wrapper for title
+        var mealHeader = document.createElement("div");
+        // title
+        var mealTitle = document.createElement("h6");
+
+        // add classes needed to elements
+        $(singleMealDiv).addClass("cell large-4 result-cell");
+        $(mealHeader).addClass("result-bg");
+        $(mealTitle).addClass("result");
+        //$(mealImg).addClass("thumbnail");
+
+        // add data-img of meal
+        $(mealImg).attr("src", element.strMealThumb);
+        // add text data-title of meal
+        $(mealTitle).text(element.strMeal);
+        // set meal id to cell id
+        $(singleMealDiv).attr("id", element.idMeal);
+
+        
+        // put h4 in h4 wrapper
+        mealHeader.append(mealTitle);
+        // put h4 and img in cell
+        singleMealDiv.append(mealImg, mealHeader);
+        // append cell to results element
+        mealResultsEl.append(singleMealDiv);
+
+        //could we use a modal once clicking on a recipe to display ingredients or recipe and give close button option and recipe book option?
+    });
+}
+ 
 
 // submit listener
 $("#search-form").on("submit", submitHandler);
