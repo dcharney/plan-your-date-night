@@ -4,7 +4,11 @@ var circleIndicatorOneEl = $("#circle-indicator-1");
 var circleIndicatorTwoEl = $("#circle-indicator-2");
 
 var drinkResultsEl = $("#drink-results");
+var drinksSavedEl = $("#drinks-saved");
 var drinks = [];
+
+//recipe book save data
+var drinkRecipeBookData = [];
 
 
 // push data from api to drinks array
@@ -50,14 +54,15 @@ var drinkResults = function(data) {
 
 var openDrinkModal = function(data) {
     var dataInfo = data.drinks[0];
+    var drinkId = dataInfo.idDrink;
     var drinkName = dataInfo.strDrink;
     var category = dataInfo.strCategory;
-    var youtube = dataInfo.strVideo ? data.strVideo : ""; // if video link available show other wise set to empty
     var alcohol = dataInfo.strAlcoholic;
     var glass = dataInfo.strGlass;
     var instructions = dataInfo.strInstructions;
     var img = dataInfo.strDrinkThumb;
     var ingredients = [];
+    var saveText = "";
 
     // Filtering through the objects to find list of ingredients and put their values in an array
     for(var i = 0; i < 15; i++) { // ingredients list goes to 15 max in api
@@ -65,6 +70,20 @@ var openDrinkModal = function(data) {
             ingredients.push(" " + dataInfo["strIngredient"+i]); //added (" " + ) to add spaces after ingredient item
         };
     }
+
+
+    // Find if the array already has recipe as object by comparing the property value then
+    // if in recipe book, update to text to "remove from recipe book" else to "save to recipe"
+    if(drinkRecipeBookData.some(recipe => recipe.drinkName === drinkName)){
+        saveText = "Remove From Recipe Book";
+    } else {
+        saveText = "Save To Recipe Book";
+    }
+
+    // update text and add drink id date in save btn
+    $("#save-btn")
+        .text(saveText)
+        .attr('data-drinkId', drinkId);
 
     // update drink name in modal
     $("#drink-name").text(drinkName);
@@ -78,7 +97,7 @@ var openDrinkModal = function(data) {
         "<br>" +
         "<p>Instructions: "+ instructions + "</p>" +
         "<br>" +
-        "<p>Ingredients: "+ ingredients + "</p>"
+        "<p id='drink-ingredients'>Ingredients: "+ ingredients + "</p>"
     );
     
     // update img
@@ -176,6 +195,113 @@ var drinkClicked = function(event) {
     fetchDrinkInfo(idDrink);
 }
 
+//placeholder function for shoping list
+var addDrinkShoppingList = function() {
+    // find ingredients
+    var ingredients = $("#drink-ingredients").text();
+
+    console.log(ingredients);
+}
+
+var populateDrinkRecipeBook = function(name, image, id, addRecipe) {
+    // if adding to recipe book
+    if(addRecipe === true) {
+        // cell wrapper for individual drinks
+        var cellDiv = document.createElement("div");
+        // bg img in wrapper
+        var img = document.createElement("img");
+        // div wrapper for title/drink name
+        var h6Div = document.createElement("div");
+        // title/ drink name
+        var h6 = document.createElement("h6");
+
+        // add classes needed to elements
+        $(cellDiv).addClass("cell large-4 result-cell");
+        $(h6Div).addClass("result-bg");
+        $(h6).addClass("result");
+    
+        // add data-img
+        $(img).attr("src", image);
+        // add text data-title of drink
+        $(h6).text(name);
+        // set drink id to cell id
+        $(cellDiv).attr("id", id);
+    
+        // put h4 in h4 wrapper
+        h6Div.append(h6);
+        // put h4 and img in cell
+        cellDiv.append(img, h6Div);
+        // append cell to results element
+        $("#drinks-saved").append(cellDiv);
+    }
+    // else if removing from recipe book
+    else { 
+        // remove from saved recipe book section only
+        $(drinksSavedEl).find("#"+id).remove();
+    }
+}
+
+// save & remove recipe function
+var saveDrinkRecipe = function(event) {
+    // grab drink name
+    var name = $(event.target).closest("#drink-modal").find("#drink-name").text();
+    // grab image
+    var image = $(event.target).closest("#drink-modal").find("img").attr('src');
+    // grab drink unique id
+    var id = $(event.target).attr("data-drinkId");
+    // add or remove var
+    var addRecipe = true;
+
+    // save to recipe book / local storage
+    var recipeData = {drinkName: name, drinkImg: image, drinkId: id};
+
+    // Find if the array already has recipe as object by comparing the property value
+    if(drinkRecipeBookData.some(recipe => recipe.drinkName === name)){
+        // delete if already saved (clicked "remove from recipe book)") by
+        // updating recipe book var to not include this recipe
+        drinkRecipeBookData = drinkRecipeBookData.filter(recipe => recipe.drinkName !== name);
+        // update local storage to array
+        localStorage.setItem('drinkRecipeBookData', JSON.stringify(drinkRecipeBookData));
+        // remove from recipe book
+        addRecipe = false;
+        // update text of modal
+        $("#save-btn").text("Save To Recipe Book");
+
+    } else { 
+        // not a duplicate so save (clicked "save to recipe book")
+        drinkRecipeBookData.push(recipeData);
+        // update local storage to array
+        localStorage.setItem('drinkRecipeBookData', JSON.stringify(drinkRecipeBookData));
+        // add to recipe book
+        addRecipe = true;
+        // update text of modal
+        $("#save-btn").text("Remove From Recipe Book");
+
+    }
+
+    // populate to recipe book right away 
+    populateDrinkRecipeBook(name, image, id, addRecipe);
+
+}
+
+// load drink local storage data
+var loadDrinkRecipeBook = function() {
+    var localData = JSON.parse(localStorage.getItem("drinkRecipeBookData"));
+    // check if empty before loading
+    if (localData) {
+        // update array to local storage
+        drinkRecipeBookData = localData;
+        // populate recipe book section with saved data
+        drinkRecipeBookData.forEach(element => {
+            populateDrinkRecipeBook(element.drinkName, element.drinkImg, element.drinkId, true);
+        });
+    } else {
+        return
+    }
+
+}
+// load / populate drink section of recipe book when page loads
+loadDrinkRecipeBook();
 // submit listener
 $("#search-form").on("submit", submitHandler);
 
@@ -189,3 +315,6 @@ liquorSearchEl.autocomplete({
 
 // drink selected listener
 $(drinkResultsEl).on("click", drinkClicked);
+$(drinksSavedEl).on("click", drinkClicked);
+// save to recipe btn listener
+$("#save-btn").on("click", saveDrinkRecipe);
