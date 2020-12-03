@@ -12,7 +12,7 @@ body {
 /* Bg image(s) */
 main {
     height: 100vh;
-    overflow-y: scroll;
+    overflow-y: hidden;
     scroll-snap-type: y mandatory;
 }
 
@@ -54,7 +54,7 @@ header h2 {
     font-size: 25px;
 }
 
-header h2 a {
+header h1 a, header h2 a {
     text-decoration: none;
     color: white;
 }

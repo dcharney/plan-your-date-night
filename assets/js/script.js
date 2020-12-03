@@ -7,6 +7,15 @@ var circleIndicatorTwoEl = $("#circle-indicator-2");
 var drinkResultsEl = $("#drink-results");
 var drinks = [];
 
+// disable scrolling
+var disableScroll = function() {
+    mainEl.attr("overflow-y","hidden");
+}
+// enable scrolling
+var enableScroll = function() {
+    mainEl.attr("overflow-y","scroll");
+}
+
 // push data from api to drinks array
 var suggestLiquor = function(data) {
     data.drinks.forEach(element => {
@@ -120,12 +129,3 @@ liquorSearchEl.autocomplete({
     appendTo: "#suggestions-wrapper",
     autoFocus: true
 });
-
-
-var formSubmitHandlerTest = function(event) {
-    var hash = $("#results-section");
-    hash[0].scrollIntoView();
-}
-
-var testButtonEl = $("#test");
-testButtonEl.click(formSubmitHandlerTest);
