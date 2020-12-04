@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css' />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css'/>
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Plan Your Date Night</title>
 </head>
@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="grid-x">
-            <h1 class="cell small-9">Plan Your Date Night</h1>
+            <h1 class="cell small-9"><a href="#search-section">Plan Your Date Night</a></h1>
             <h2 id="recipe-book-btn" class="cell small-3"><a href="#recipe-section">Recipe Book</a></h2>
         </div>
     </header>
@@ -48,94 +48,18 @@
                         <h1>Recipe Results</h1>
                     </div>
                 </div>
-                <div class="grid-x grid-padding-x grid-padding-y">
+                <div class="food-drinks-wrapper grid-x grid-padding-x grid-padding-y">
                     <div class="cell large-6 result-container">
                         <h2> Food</h2>
-                        <div class="grid-container-fluid">
-                            <div class="grid-x">
-                                <div class="cell large-4 result-cell">
-                                    <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
-                                    <div class="result-bg">
-                                        <h4 class="result">Option 1</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 result-cell">
-                                    <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
-                                    <div class="result-bg">
-                                        <h4 class="result">Option 1</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 result-cell">
-                                    <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
-                                    <div class="result-bg">
-                                        <h4 class="result">Option 1</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid-x">
-                                <div class="cell large-4 result-cell">
-                                    <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
-                                    <div class="result-bg">
-                                        <h4 class="result">Option 1</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 result-cell">
-                                    <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
-                                    <div class="result-bg">
-                                        <h4 class="result">Option 1</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 result-cell">
-                                    <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
-                                    <div class="result-bg">
-                                        <h4 class="result">Option 1</h4>
-                                    </div>
-                                </div>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="food-results" class="grid-x results">
                             </div>
                         </div>
                     </div>
                     <div class="cell large-6 result-container">
                         <h2> Drink</h2>
-                        <div class="grid-container-fluid">
-                            <div class="grid-x">
-                                <div class="cell large-4 result-cell">
-                                    <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" />
-                                    <div class="result-bg">
-                                        <h4 class="result">Option 1</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 result-cell">
-                                    <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" />
-                                    <div class="result-bg">
-                                        <h4 class="result">Option 1</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 result-cell">
-                                    <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" />
-                                    <div class="result-bg">
-                                        <h4 class="result">Option 1</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid-x">
-                                <div class="cell large-4 result-cell">
-                                    <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" />
-                                    <div class="result-bg">
-                                        <h4 class="result">Option 1</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 result-cell">
-                                    <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" />
-                                    <div class="result-bg">
-                                        <h4 class="result">Option 1</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 result-cell">
-                                    <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" />
-                                    <div class="result-bg">
-                                        <h4 class="result">Option 1</h4>
-                                    </div>
-                                </div>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="drink-results" class="grid-x results">
                             </div>
                         </div>
                     </div>

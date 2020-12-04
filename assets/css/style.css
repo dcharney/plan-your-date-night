@@ -1,18 +1,25 @@
-html {
+* {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: sans-serif;
+    font-family: 'Open Sans Light';
     color: white;
     margin: 0;
     font-weight: 100;
 }
 
 /* Bg image(s) */
+main {
+    height: 100vh;
+    overflow-y: hidden;
+    scroll-snap-type: y mandatory;
+}
+
 section {
     position: relative;
     height: 100vh;
+    scroll-snap-align: start;
 }
 
 .bg-img-wrapper {
@@ -38,8 +45,7 @@ header h1 {
     font-size: 30px;
 }
 
-header h1,
-header h2 {
+header h1, header h2 {
     padding: 30px;
     font-family: 'Open Sans Light';
 }
@@ -48,11 +54,10 @@ header h2 {
     font-size: 25px;
 }
 
-header h2 a {
+header h1 a, header h2 a {
     text-decoration: none;
     color: white;
 }
-
 /* Main Header End */
 
 /* Search Section Start */
@@ -152,6 +157,17 @@ header h2 a {
     margin-left: .5vw;
 }
 
+.food-drinks-wrapper {
+    min-width: 958px;
+    height: 75%;
+    overflow: hidden;
+}
+
+.food-drinks-wrapper .scroll-wrapper {
+    height: 100%;
+    overflow-y: scroll;
+}
+
 .result-cell {
     padding: .5vw;
     position: relative;
@@ -184,6 +200,7 @@ header h2 a {
 .result-container,
 .shopping-container {
     padding: 5%;
+    height: 100%;
 }
 
 /* Results Section End */
@@ -204,8 +221,6 @@ header h2 a {
 }
 
 /* Shopping-list Styles End
-
-
 /* Recipe Section Start */
 
 #recipe-section,
