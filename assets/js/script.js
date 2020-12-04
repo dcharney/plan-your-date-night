@@ -115,6 +115,7 @@ var submitHandler = function(event) {
         }
         // scroll to results section after search
         mainEl[0].scrollTo(0, $('#results-section').offset().top);
+        enableScroll();
     }
     
 }
