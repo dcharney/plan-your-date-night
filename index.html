@@ -52,7 +52,7 @@
                     <div class="cell large-6 result-container">
                         <h2> Food</h2>
                         <div class="grid-container-fluid scroll-wrapper">
-                            <div id="food-results" class="grid-x results">
+                            <div id="meal-results" class="grid-x results">
                             </div>
                         </div>
                     </div>
@@ -121,6 +121,47 @@
             </div>
             <div class="cell save-btn-wrapper">
                 <h3 data-drinkId="" id="save-btn">Save To Recipe Book</h3>
+            </div>
+        </section>
+        <!--end of results-->
+
+        <!-- Food Highlight Section -->
+        <section id="meal-modal" class="grid-y large reveal">
+            <div class="cell modal-title">
+                <h1>Insert Food Name</h1>
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="save-item-container cell-container cell grid-x">
+                <div class="cell cell-card large-4">
+                    <div class="circular-image" id="food-highlight-img">
+                        <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
+                    </div>
+                    <h4 class="meal-source-link">Link</h4>
+                    <p class="meal-source">Source</p>
+                </div>
+                <div class="cell cell-details large-8" id="meal-highlight-details"> Lorem ipsum dolor sit, amet consectetur
+                    adipisicing elit.</div>
+            </div>
+        </section>
+
+         <!-- Drink Highlight Section -->
+        <section id="drink-modal" class="modal grid-y large reveal" data-reveal>
+            <div class="cell modal-title">
+                <h1 id="drink-name">Insert Drink Name</h1>
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="save-item-container grid-x">
+                <div class="cell cell-card large-4">
+                    <div class="circular-image" id="drink-highlight-img">
+                        <img src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
+                    </div>
+                </div>
+                <div class="cell cell-details large-8" id="drink-highlight-details"> Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit.</div>
             </div>
         </section>
 
