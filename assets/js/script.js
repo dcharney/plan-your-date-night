@@ -9,11 +9,11 @@ var drinks = [];
 
 // disable scrolling
 var disableScroll = function() {
-    mainEl.attr("overflow-y","hidden");
+    mainEl.css("overflow-y","hidden");
 }
 // enable scrolling
 var enableScroll = function() {
-    mainEl.attr("overflow-y","scroll");
+    mainEl.css("overflow-y","scroll");
 }
 
 // push data from api to drinks array
