@@ -274,9 +274,14 @@ header h1 a, header h2 a {
 
 
 /* Save-section Style Start */
+.reveal-overlay {
+    backdrop-filter: blur(5px);
+}
 
-.save-section {
-    align-items: center;
+.modal {
+    background-color: transparent;
+    border: none;
+    outline: none;
 }
 
 .save-item-container .cell {
@@ -289,9 +294,9 @@ header h1 a, header h2 a {
 
 }
 
-#food-save {
+.modal-title {
     text-align: center;
-    padding: 170px 20px 0px 20px;
+    padding: 100px 20px 0px 20px;
     border-radius: 25px;
 }
 
@@ -307,7 +312,7 @@ header h1 a, header h2 a {
     overflow: hidden;
     border-radius: 50%;
     width: 80%;
-    margin: 25px 25px 30px 25px;
+    margin: 84px 25px 30px 25px;
     display: flex;
     justify-content: center;
 }
@@ -317,8 +322,7 @@ header h1 a, header h2 a {
 }
 
 #food-highlight-details, #drink-highlight-details{
-    padding-left: 50px;
-    padding-top: 75px;
+    padding: 50px;
     line-height: 2;
 }
 
@@ -328,6 +332,10 @@ header h1 a, header h2 a {
 
 .cell-details {
     border-radius: 0 25px 25px 0;
+}
+
+.save-btn-wrapper {
+    text-align: center;
 }
 
 

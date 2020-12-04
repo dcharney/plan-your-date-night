@@ -74,9 +74,12 @@
         <!-- End Results Section -->
 
         <!-- Food Highlight Section -->
-        <section id="save-section" class="grid-y">
-            <div class="cell" id="food-save">
+        <section id="food-modal" class="grid-y large reveal">
+            <div class="cell modal-title">
                 <h1>Insert Food Name</h1>
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="save-item-container cell-container cell grid-x">
                 <div class="cell cell-card large-4">
@@ -97,44 +100,28 @@
                     adipisicing elit. Molestias quam consequuntur, qui nemo neque quas id iusto. Tempora a, temporibus
                     ducimus unde eveniet repellendus blanditiis iste modi officia laboriosam ea! </div>
             </div>
-
-
-            <!-- Inserting bg image -->
-            <div class="bg-img-wrapper">
-                <img src="./assets/images/results-bg.png">
-            </div>
-
         </section>
 
         <!-- Drink Highlight Section -->
-        <section id="save-section" class="grid-y">
-            <div class="cell" id="food-save">
-                <h1>Insert Drink Name</h1>
+        <section id="drink-modal" class="modal grid-y large reveal" data-reveal>
+            <div class="cell modal-title">
+                <h1 id="drink-name">Insert Drink Name</h1>
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>            
             </div>
             <div class="save-item-container grid-x">
                 <div class="cell cell-card large-4">
                     <div class="circular-image" id="drink-highlight-img">
-                        <img src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
                     </div>
-                    <h4 class="food-source-link">Link</h4>
-                    <p class="food-source">Source</p>
                 </div>
-                <div class="cell cell-details large-8" id="drink-highlight-details"> Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Doloremque, ipsum aliquid magnam accusamus vitae doloribus nulla nam, corrupti
-                    pariatur ipsa beatae quae nesciunt natus, velit cumque fuga quam maxime tempore. Lorem ipsum dolor
-                    sit, amet consectetur adipisicing elit. Pariatur maxime esse modi obcaecati in sed, perspiciatis
-                    atque, asperiores cum eveniet at necessitatibus reprehenderit maiores quod, corporis mollitia
-                    aperiam cupiditate doloremque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-                    doloremque consectetur sed provident est! Omnis voluptatibus, tempore iste, quibusdam sequi tempora
-                    maiores nemo, obcaecati sint quae veniam. Autem, eligendi tempora.</div>
+                <div class="cell cell-details large-8" id="drink-highlight-details">
+                    Insert Drink Data
+                </div>
             </div>
-
-
-            <!-- Inserting bg image -->
-            <div class="bg-img-wrapper">
-                <img src="./assets/images/results-bg.png">
+            <div class="cell save-btn-wrapper">
+                <h3 data-drinkId="" id="save-btn">Save To Recipe Book</h3>
             </div>
-
         </section>
 
 
@@ -226,52 +213,8 @@
                     </div>
                     <div class="cell large-6 recipe-container">
                         <h2> Drinks Saved</h2>
-                        <div class="grid-container-fluid">
-                            <div class="grid-x">
-                                <div class="cell large-4 recipe-cell">
-                                    <img
-                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
-                                    <div class="recipe-bg">
-                                        <h4 class="recipe"> 1</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 recipe-cell">
-                                    <img
-                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
-                                    <div class="recipe-bg">
-                                        <h4 class="recipe"> 2</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 recipe-cell">
-                                    <img
-                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
-                                    <div class="recipe-bg">
-                                        <h4 class="recipe"> 3</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid-x">
-                                <div class="cell large-4 recipe-cell">
-                                    <img
-                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
-                                    <div class="recipe-bg">
-                                        <h4 class="recipe"> 4</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 recipe-cell">
-                                    <img
-                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
-                                    <div class="recipe-bg">
-                                        <h4 class="recipe"> 5</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 recipe-cell">
-                                    <img
-                                        src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
-                                    <div class="recipe-bg">
-                                        <h4 class="recipe"> 6</h4>
-                                    </div>
-                                </div>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="drinks-saved" class="grid-x results">
                             </div>
                         </div>
                     </div>
@@ -287,6 +230,11 @@
 
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.core.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.mediaQuery.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.touch.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.keyboard.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.reveal.min.js'></script>
         <script src="./assets/js/script.js"></script>
     </main>
 </body>
