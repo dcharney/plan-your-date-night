@@ -304,11 +304,11 @@ header h2 a {
     justify-content: center;
 }
 
-.food-source-link, .food-source {
+.meal-source-link, .meal-source {
     padding-left: 230px;
 }
 
-#food-highlight-details, #drink-highlight-details{
+#meal-highlight-details, #drink-highlight-details{
     padding-left: 50px;
     padding-top: 75px;
     line-height: 2;
@@ -320,6 +320,10 @@ header h2 a {
 
 .cell-details {
     border-radius: 0 25px 25px 0;
+}
+
+.save-btn-wrapper {
+    text-align: center;
 }
 
 
