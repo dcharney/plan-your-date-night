@@ -46,7 +46,8 @@ header h1 {
     font-size: 30px;
 }
 
-header h1, header h2 {
+header h1,
+header h2 {
     padding: 30px;
     font-family: 'Open Sans Light';
 }
@@ -55,10 +56,12 @@ header h2 {
     font-size: 25px;
 }
 
-header h1 a, header h2 a {
+header h1 a,
+header h2 a {
     text-decoration: none;
     color: white;
 }
+
 /* Main Header End */
 
 /* Search Section Start */
@@ -318,11 +321,13 @@ header h1 a, header h2 a {
     justify-content: center;
 }
 
-.food-source-link, .food-source {
+.food-source-link,
+.food-source {
     padding-left: 230px;
 }
 
-#food-highlight-details, #drink-highlight-details{
+#food-highlight-details,
+#drink-highlight-details {
     padding: 50px;
     line-height: 2;
 }
@@ -340,4 +345,94 @@ header h1 a, header h2 a {
 }
 
 
-/* Global Styles */
+/* Media Queries */
+
+@media screen and (max-width: 39.9375em) {
+
+    header {
+        position: absolute;
+        width: 100%;
+        z-index: 0;
+    }
+
+    header h1 {
+        font-size: 10px;
+    }
+
+    header h1,
+    header h2 {
+        padding: 10px;
+        font-family: 'Open Sans Light';
+        font-size: 15px;
+    }
+
+
+    header h1 a,
+    header h2 a {
+        text-decoration: none;
+        color: white;
+
+    }
+
+    /* Resizing Results */
+    .food-drinks-wrapper {
+        max-width: 360px;
+        height: 80%;
+    }
+
+
+    #food-drink-wrapper-id {
+        display: grid;
+        grid-row: 2fr;
+        width: 80%;
+    }
+
+    .meal-results-scroller,
+    .drink-results-scroller {
+        max-width: 300px;
+    }
+
+    .meal-results-container,
+    .drink-results-container {
+        height: 95%;
+    }
+
+    .drink-results-container h2::before {
+        content: "\A";
+        white-space: pre;
+    }
+
+
+
+
+    /* Resizing Recipe */
+
+    .recipe-wrapper {
+        max-width: 360px;
+        height: 85%;
+        overflow: hidden;
+    }
+
+    .recipe-wrapper .scroll-wrapper {
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    .drink-recipe-container {
+        height: 60%;
+    }
+
+    .meal-recipe-container {
+        height: 40%;
+    }
+
+    .drink-recipe-container h2::before {
+        content: "\A";
+        white-space: pre;
+    }
+
+    /* global changes */
+    h1 {
+
+    }
+}
