@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css' />
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Plan Your Date Night</title>
 </head>
+
 <body>
     <header>
         <div class="grid-x">
             <h1 class="cell small-9">Plan Your Date Night</h1>
-            <h2 id="recipe-book-btn" class="cell small-3"><a href="#recipe-book-section">Recipe Book</a></h2>
+            <h2 id="recipe-book-btn" class="cell small-3"><a href="#recipe-section">Recipe Book</a></h2>
         </div>
     </header>
 
@@ -20,8 +22,9 @@
         <section id="search-section" class="grid-y search-section">
             <h1> Find Recipes </h1>
             <form id="search-form" class="grid-y">
-                <input id="protein-search" class="search active" name="protein" type="text" autofocus="true" placeholder="Search Protein"/>
-                <input id="liquor-search" class="search" name="liquor" type="text" placeholder="Search Liquor"/>
+                <input id="protein-search" class="search active" name="protein" type="text" autofocus="true"
+                    placeholder="Search Meal Ingredient" />
+                <input id="liquor-search" class="search" name="liquor" type="text" placeholder="Search Liquor" />
                 <input type="submit" style="display: none;"></button>
                 <!-- Wrapper to append the suggestions ul element -->
                 <div id="suggestions-wrapper"></div>
@@ -32,13 +35,13 @@
                 </div>
             </form>
             <!-- Inserting bg image -->
-            <div class="bg-img-wrapper"> 
+            <div class="bg-img-wrapper">
                 <img src="./assets/images/search-bg.png">
             </div>
         </section>
 
         <!-- Results Section -->
-        <section id="results-section">
+        <section id="results-section" class="grid-y">
             <div class="grid-container result-container">
                 <div class="grid-x grid-padding-x grid-padding-y">
                     <div class="cell">
@@ -60,18 +63,18 @@
                             </div>
                         </div>
                     </div>
-                </div>    
+                </div>
             </div>
-            
+
             <!-- Inserting bg image -->
-            <div class="bg-img-wrapper"> 
+            <div class="bg-img-wrapper">
                 <img src="./assets/images/results-bg.png">
             </div>
         </section>
-        <!--end of results-->
+        <!-- End Results Section -->
 
         <!-- Food Highlight Section -->
-        <section id="meal-modal" class="grid-y large reveal">
+        <section id="meal-modal" class="grid-y modal large reveal">
             <div class="cell modal-title">
                 <h1 id="meal-name">Insert Food Name</h1>
                 <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -82,18 +85,18 @@
                 <div class="cell cell-card large-4">
                     <div class="circular-image" id="meal-highlight-img">
                         <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
-                    </div>                    
-                </div>
-                <div class="cell cell-details large-8" id="meal-highlight-details"> 
-                    Insert Meal Data
-                </div>
-                <div class="cell save-btn-wrapper">
-                    <h3 data-foodId="" id="save-btn">Save to Recipe Book</h3>
-                </div>
+                    </div>
+                     </div>
+                <div class="cell cell-details large-8" id="meal-highlight-details"> Lorem ipsum dolor sit, amet consectetur
+                    adipisicing elit. Dolor vero aut delectus magni dolorum, molestiae cumque?</div>
+            </div>
+            <div class="cell save-btn-wrapper">
+                <h3 data-mealId="" id="meal-save-btn">Save To Recipe Book</h3>
+                <h3 data-mealId="" id="meal-save-shopping-list">Save to Shopping List</h3>
             </div>
         </section>
-        
-         <!-- Drink Highlight Section -->
+
+        <!-- Drink Highlight Section -->
         <section id="drink-modal" class="modal grid-y large reveal" data-reveal>
             <div class="cell modal-title">
                 <h1 id="drink-name">Insert Drink Name</h1>
@@ -104,17 +107,18 @@
             <div class="save-item-container grid-x">
                 <div class="cell cell-card large-4">
                     <div class="circular-image" id="drink-highlight-img">
-                        <img src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
                     </div>
-                </div>    
-                <div class="cell cell-details large-8" id="drink-highlight-details"> 
+                </div>
+                <div class="cell cell-details large-8" id="drink-highlight-details">
                     Insert Drink Data
                 </div>
             </div>
             <div class="cell save-btn-wrapper">
-                <h3 data-drinkId="" id="save-btn">Save to Recipe Book</h3>
+                <h3 data-drinkId="" id="save-btn">Save To Recipe Book</h3>
+                
             </div>
         </section>
+        <!--end of results-->
 
         <!-- Shopping List Section -->
         <section id="shopping-section" class="grid-y">
@@ -140,8 +144,6 @@
                 <img src="./assets/images/results-bg.png">
             </div>
 
-        </section>
-
         <!-- Recipe Book Section -->
         <section id="recipe-section" class="grid-y">
             <div class="grid-container result-container">
@@ -154,18 +156,18 @@
                     <div class="cell large-6 recipe-container">
                         <h2> Foods Saved</h2>
                         <div class="grid-container-fluid scroll-wrapper">
-                            <div id="meals-saved" class="grid-x results"> 
+                            <div id="meals-saved" class="grid-x results">
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div>        
                     <div class="cell large-6 recipe-container">
                         <h2> Drinks Saved</h2>
                         <div class="grid-container-fluid scroll-wrapper">
                             <div id="drinks-saved" class="grid-x results">
                             </div>
                         </div>
-                    </div>        
+                    </div>
+                </div>
             </div>
 
             <!-- Inserting bg image -->
@@ -184,4 +186,5 @@
         <script src="./assets/js/script.js"></script>
     </main>
 </body>
+
 </html>

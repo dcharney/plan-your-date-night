@@ -2,8 +2,9 @@ html {
     scroll-behavior: smooth;
     
 }
+
 body {
-    font-family: 'Open Sans Light';
+    font-family: sans-serif;
     color: white;
     margin: 0;
     font-weight: 100;
@@ -38,7 +39,8 @@ header h1 {
     font-size: 30px;
 }
 
-header h1, header h2 {
+header h1,
+header h2 {
     padding: 30px;
     font-family: 'Open Sans Light';
 }
@@ -51,6 +53,7 @@ header h2 a {
     text-decoration: none;
     color: white;
 }
+
 /* Main Header End */
 
 /* Search Section Start */
@@ -130,7 +133,7 @@ header h2 a {
     border-color: rgb(176 176 176 / 45%);
 }
 
-.search-section form div .circle-indicator.active{
+.search-section form div .circle-indicator.active {
     background-color: rgb(176 176 176 / 45%);
 }
 
@@ -164,7 +167,6 @@ header h2 a {
 .result-cell {
     padding: .5vw;
     position: relative;
-    
 }
 
 .result-bg {
@@ -199,6 +201,10 @@ header h2 a {
 
 /* Results Section End */
 
+
+
+
+
 /* Shopping-list Section Start */
 #shopping-container {
     background-color: rgba(80, 80, 80, 0.411);
@@ -211,6 +217,8 @@ header h2 a {
 }
 
 /* Shopping-list Styles End
+
+
 /* Recipe Section Start */
 
 #recipe-section,
@@ -264,6 +272,9 @@ header h2 a {
 
 
 /* Save-section Style Start */
+.reveal-overlay {
+    backdrop-filter: blur(5px);
+}
 
 .modal {
     background-color: transparent;
@@ -310,7 +321,6 @@ header h2 a {
 
 #meal-highlight-details, #drink-highlight-details{
     padding-left: 50px;
-    padding-top: 75px;
     line-height: 2;
 }
 

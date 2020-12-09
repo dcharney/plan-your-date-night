@@ -10,6 +10,9 @@ var drinks = [];
 //recipe book data
 var mealRecipeBookData = [];
 
+//shopping list data
+var mealShoppingListData = [];
+
 
 // push data from api to food array
 var suggestMeal = function(data) {
@@ -144,9 +147,7 @@ var mealResults = function(data) {
         // put h4 and img in cell
         singleMealDiv.append(mealImg, mealHeader);
         // append cell to results element
-        mealResultsEl.append(singleMealDiv);
-
-    
+        mealResultsEl.append(singleMealDiv);  
     });
 }
 
@@ -167,7 +168,7 @@ var fetchMealInfo = function(idMeal) {
 }
 
 var openMealModal = function(data) {
-    
+    console.log(data);
     var dataInfo = data.meals[0];
     var mealId = dataInfo.idMeal;
     var mealName = dataInfo.strMeal;
@@ -198,7 +199,7 @@ var openMealModal = function(data) {
     }
 
     // update text and add meal id date in save btn
-    $("#save-btn")
+    $("#meal-save-btn")
         .text(saveText)
         .attr('data-mealId', mealId);
 
@@ -298,7 +299,7 @@ var saveMealRecipe = function(event) {
         // remove from recipe book
         addRecipe = false;
         // update text of modal
-        $("#save-btn").text("Save To Recipe Book");
+        $("#meal-save-btn").text("Save To Recipe Book");
 
     } else { 
         // not a duplicate so save (clicked "save to recipe book")
@@ -308,12 +309,53 @@ var saveMealRecipe = function(event) {
         // add to recipe book
         addRecipe = true;
         // update text of modal
-        $("#save-btn").text("Remove From Recipe Book");
+        $("#meal-save-btn").text("Remove From Recipe Book");
 
     }
 
     // populate to recipe book right away 
     populateMealRecipeBook(name, image, id, addRecipe);
+
+}
+
+// save & remove recipe function
+var saveMealShoppingList = function(event) {
+    // grab meal name
+    var name = $(event.target).closest("#meal-modal").find("#meal-name").text();
+    // grab meal unique id
+    var id = $(event.target).attr("data-mealId");
+    // add or remove var
+    var addRecipe = true;
+
+    // save to shopping list / local storage
+    var recipeData = {mealName: name, mealId: id};
+
+    // Find if the array already has recipe as object by comparing the property value
+    if(mealShoppingListData.some(recipe => recipe.mealName === name)){
+        // delete if already saved (clicked "remove from shopping list)") by
+        // updating recipe book var to not include this recipe
+        mealShoppingListData = mealShoppingList.filter(recipe => recipe.mealName !== name);
+        // update local storage to array
+        localStorage.setItem('mealRecipeBookData', JSON.stringify(mealShoppingListData));
+        // remove from recipe book
+        addRecipe = false;
+        // update text of modal
+        $("#meal-save-btn").text("Save To Recipe Book");
+
+    } else { 
+        // not a duplicate so save (clicked "save to recipe book")
+        mealShoppingListData.push(recipeData);
+        // update local storage to array
+        localStorage.setItem('mealShoppingListData', JSON.stringify(mealShoppingListData));
+        // add to recipe book
+        addRecipe = true;
+        // update text of modal
+        $("#meal-save-btn").text("Remove From Recipe Book");
+
+    }
+
+    // populate to Shopping List 
+    populateMealShoppingList(name, image, id, addRecipe);
 
 }
 
@@ -362,4 +404,6 @@ liquorSearchEl.autocomplete({
 $(mealResultsEl).on("click", mealClicked);
 $(mealsSavedEl).on("click", mealClicked);
 // save to recipe btn listener
-$("#save-btn").on("click", saveMealRecipe);
+$("#meal-save-btn").on("click", saveMealRecipe);
+//save to shopping list
+$("#meal-save-shopping-list").on("click", saveMealShoppingList);
