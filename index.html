@@ -74,7 +74,7 @@
         <!-- End Results Section -->
 
         <!-- Food Highlight Section -->
-        <section id="meal-modal" class="grid-y modal large reveal">
+        <section id="meal-modal" class="modal grid-y large reveal">
             <div class="cell modal-title">
                 <h1 id="meal-name">Insert Food Name</h1>
                 <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -92,7 +92,7 @@
             </div>
             <div class="cell save-btn-wrapper">
                 <h3 data-mealId="" id="meal-save-btn">Save To Recipe Book</h3>
-                <h3 data-mealId="" id="meal-save-shopping-list">Save to Shopping List</h3>
+                <h3 data-mealId="" id="meal-save-shop-list">Update Shopping List</h3>
             </div>
         </section>
 
@@ -122,19 +122,41 @@
 
         <!-- Shopping List Section -->
         <section id="shopping-section" class="grid-y">
-
             <div class="grid-container shopping-container">
-                <h1>Shopping List</h1>
-                <div id="shopping-container" class="grid-x grid-padding-x grid-padding-y">
-                    <div class="cell shopping-list">
-                        <h1> Use the "li" in id="shopping-list" container to insert the shopping list items. </h1>
-                        <ul class="shopping-list-container">
-                            <li> 1. eggs </li>
-                            <li> 2. milk </li>
-                            <li> 3. rice </li>
-                            <li> 4. Beef </li>
-                            <li> 5. etc. </li>
-                        </ul>
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell">
+                        <h1>Shopping List</h1>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell large-6 recipe-container">
+                        <h2> Meal Shopping List</h2>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="meals-shopping" class="grid-x results">
+                                <div class="cell result-cell" id="">
+                                    <h5 id="meal-name-shopping"></h5>
+                                    <ul id="meal-ul-shopping">
+                                    </ul>
+                                    <div class="bg-img-wrapper-small">
+                                        <img id="meal-shopping-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="cell large-6 recipe-container">
+                        <h2> Drink Shopping List</h2>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="drinks-shopping" class="grid-x results">
+                                <div class="cell result-cell" id="">
+                                    <h5 id="drink-name-shopping"></h5>
+                                    <ul id="drink-ul-shopping">
+                                    </ul>
+                                    <div class="bg-img-wrapper-small">
+                                        <img id="drink-shopping-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -143,6 +165,8 @@
             <div class="bg-img-wrapper">
                 <img src="./assets/images/results-bg.png">
             </div>
+
+        </section>    
 
         <!-- Recipe Book Section -->
         <section id="recipe-section" class="grid-y">

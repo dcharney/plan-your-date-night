@@ -11,7 +11,7 @@ var drinks = [];
 var mealRecipeBookData = [];
 
 //shopping list data
-var mealShoppingListData = [];
+var mealShoppingData = [];
 
 
 // push data from api to food array
@@ -168,7 +168,7 @@ var fetchMealInfo = function(idMeal) {
 }
 
 var openMealModal = function(data) {
-    console.log(data);
+    
     var dataInfo = data.meals[0];
     var mealId = dataInfo.idMeal;
     var mealName = dataInfo.strMeal;
@@ -234,7 +234,7 @@ var addMealShoppingList = function() {
     // find ingredients
     var ingredients = $("#meal-ingredients").text();
 
-    console.log(ingredients);
+    
 }
 
 var populateMealRecipeBook = function(name, image, id, addRecipe) {
@@ -273,6 +273,25 @@ var populateMealRecipeBook = function(name, image, id, addRecipe) {
         // remove from saved recipe book section only
         $(mealsSavedEl).find("#"+id).remove();
     }
+}
+
+var populateMealShoppingList = function(name, ingredients, image) {
+
+    // add text data-title of meal
+    $("#meal-name-shopping").text("Ingredients: " + name);
+
+    // make ul empty then fill with list elements
+    $("#meal-ul-shopping").html("");
+    // create list eleements
+    ingredients.forEach(element => {
+        var ingredient = document.createElement("li");
+        $(ingredient).text(element);
+        // put list items in UL
+        $("#meal-ul-shopping").append(ingredient); 
+    });
+
+    // add data-img
+    $("#meal-shopping-img").attr("src", image);
 }
 
 // save & remove recipe function
@@ -318,44 +337,32 @@ var saveMealRecipe = function(event) {
 
 }
 
-// save & remove recipe function
-var saveMealShoppingList = function(event) {
+var saveMealShopList = function(event) {
     // grab meal name
     var name = $(event.target).closest("#meal-modal").find("#meal-name").text();
     // grab meal unique id
     var id = $(event.target).attr("data-mealId");
-    // add or remove var
-    var addRecipe = true;
+    // grab ingredients
+    var ingredientsText = $(event.target).closest("#meal-modal").find("#meal-ingredients").text();
+    // grab image
+    var image = $(event.target).closest("#meal-modal").find("img").attr('src');
+    // remove the ingredients text from string
+    ingredientsText = ingredientsText.split(':').pop();
+    // turn into array by separating from comma
+    var ingredients = ingredientsText.split(',');
 
-    // save to shopping list / local storage
-    var recipeData = {mealName: name, mealId: id};
+    // update shopping data
+    var shoppingData = {mealName: name, mealIngredients: ingredients, mealImg: image};
+    mealShoppingData.push(shoppingData);
 
-    // Find if the array already has recipe as object by comparing the property value
-    if(mealShoppingListData.some(recipe => recipe.mealName === name)){
-        // delete if already saved (clicked "remove from shopping list)") by
-        // updating recipe book var to not include this recipe
-        mealShoppingListData = mealShoppingList.filter(recipe => recipe.mealName !== name);
-        // update local storage to array
-        localStorage.setItem('mealRecipeBookData', JSON.stringify(mealShoppingListData));
-        // remove from recipe book
-        addRecipe = false;
-        // update text of modal
-        $("#meal-save-btn").text("Save To Recipe Book");
+    // update local storage to array
+    localStorage.setItem('mealShoppingData', JSON.stringify(mealShoppingData));
 
-    } else { 
-        // not a duplicate so save (clicked "save to recipe book")
-        mealShoppingListData.push(recipeData);
-        // update local storage to array
-        localStorage.setItem('mealShoppingListData', JSON.stringify(mealShoppingListData));
-        // add to recipe book
-        addRecipe = true;
-        // update text of modal
-        $("#meal-save-btn").text("Remove From Recipe Book");
+    // update text of modal
+    $("#meal-save-shop-list").text("Update Shopping List");
 
-    }
-
-    // populate to Shopping List 
-    populateMealShoppingList(name, image, id, addRecipe);
+    // populate to shopping list right away 
+    populateMealShoppingList(name, ingredients, image);
 
 }
 
@@ -375,12 +382,23 @@ var loadMealRecipeBook = function() {
     }
 
 }
+var loadMealShoppingList = function() {
+    var localData = JSON.parse(localStorage.getItem("mealShoppingData"));
+    // check if empty before loading
+    if (localData) {
+        // update array to local storage
+        mealShoppingData = localData;
+        // populate recipe book section with saved data
+        populateMealShoppingList(mealShoppingData[0].mealName, mealShoppingData[0].mealIngredients, mealShoppingData[0].mealImg);
+    } else {
+        return
+    }
+
+}
 // load / populate meal section of recipe book when page loads
 loadMealRecipeBook();
-// submit listener
-$("#search-form").on("submit", submitHandler);
-
-
+//load/populate shopping list for meals when page loads
+loadMealShoppingList();
 // submit listener
 $("#search-form").on("submit", submitHandler);
 
@@ -406,4 +424,4 @@ $(mealsSavedEl).on("click", mealClicked);
 // save to recipe btn listener
 $("#meal-save-btn").on("click", saveMealRecipe);
 //save to shopping list
-$("#meal-save-shopping-list").on("click", saveMealShoppingList);
+$("#meal-save-shop-list").on("click", saveMealShopList);
