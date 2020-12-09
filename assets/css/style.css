@@ -173,6 +173,17 @@ header h2 a {
     overflow-y: scroll;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.food-drinks-wrapper .scroll-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.food-drinks-wrapper .scroll-wrapper {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
 .result-cell {
     padding: .5vw;
     position: relative;
