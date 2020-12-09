@@ -243,51 +243,23 @@ var populateDrinkRecipeBook = function(name, image, id, addRecipe) {
     }
 }
 
-var populateDrinkShoppingList = function(name, id, ingredients, image, addIngredients) {
-    // if adding to shopping list
-    if(addIngredients === true) {
-        // cell wrapper for individual drinks
-        var cellDiv = document.createElement("div");
-        // bg img in wrapper
-        var imgWrapper = document.createElement("div");
-        var img = document.createElement("img");
-        // title/ drink name
-        var h4 = document.createElement("h6");
-        // list of ingredients
-        var ingredientsUL = document.createElement("ul");
-        ingredients.forEach(element => {
-            var ingredient = document.createElement("li");
-            $(ingredient).text(element);
-            // put list items in UL
-            ingredientsUL.append(ingredient); 
-        });
-        
+var populateDrinkShoppingList = function(name, ingredients, image) {
 
-        // add classes needed to elements
-        $(cellDiv).addClass("cell result-cell");
-        $(h4).addClass("");
-        $(imgWrapper).addClass("bg-img-wrapper-small");
+    // add text data-title of drink
+    $("#drink-name-shopping").text("Ingredients for the drink: " + name);
 
-        // add data-img
-        $(img).attr("src", image);
-    
-        // add text data-title of drink
-        $(h4).text("Ingredients for the drink: " + name);
-        // set drink id to cell id
-        $(cellDiv).attr("id", id);
+    // make ul empty then fill with list elements
+    $("#drink-ul-shopping").html("");
+    // create list eleements
+    ingredients.forEach(element => {
+        var ingredient = document.createElement("li");
+        $(ingredient).text(element);
+        // put list items in UL
+        $("#drink-ul-shopping").append(ingredient); 
+    });
 
-        // add img to its wrapper
-        $(imgWrapper).append(img);
-        // put h4 and list in cell
-        cellDiv.append(h4, ingredientsUL, imgWrapper);
-        // append cell to results element
-        $("#drinks-shopping").append(cellDiv);
-    }
-    // else if removing from recipe book
-    else { 
-        // remove from saved recipe book section only
-        $(drinksSavedEl).find("#"+id).remove();
-    }
+    // add data-img
+    $("#drink-shopping-img").attr("src", image);
 }
 
 // save & remove recipe function
@@ -346,37 +318,19 @@ var saveDrinkShopList = function(event) {
     ingredientsText = ingredientsText.split(':').pop();
     // turn into array by seperating from comma
     var ingredients = ingredientsText.split(',');
-    // add or remove var
-    var addIngredients = true;
 
-    var shoppingData = {drinkName: name, drinkIngredients: ingredients, drinkImg: image, drinkId: id};
-    
-    // Find if the array already has recipe as object by comparing the property value
-    if(drinkShoppingData.some(recipe => recipe.drinkName === name)){
-        // delete if already saved (clicked "remove from recipe book)") by
-        // updating shopping list var to not include this recipe
-        drinkShoppingData = drinkShoppingData.filter(recipe => recipe.drinkName !== name);
-        // update local storage to array
-        localStorage.setItem('drinkShoppingData', JSON.stringify(drinkShoppingData));
-        // remove from shopping list
-        addIngredients = false;
-        // update text of modal
-        $("#drink-save-shop-list").text("Save To Shopping List");
+    // update shopping data
+    var shoppingData = {drinkName: name, drinkIngredients: ingredients, drinkImg: image};
+    drinkShoppingData.push(shoppingData);
 
-    } else { 
-        // not a duplicate so save (clicked "save to recipe book")
-        drinkShoppingData.push(shoppingData);
-        // update local storage to array
-        localStorage.setItem('drinkShoppingData', JSON.stringify(drinkShoppingData));
-        // add to recipe book
-        addIngredients = true;
-        // update text of modal
-        $("#drink-save-shop-list").text("Remove From Shopping List");
+    // update local storage to array
+    localStorage.setItem('drinkShoppingData', JSON.stringify(drinkShoppingData));
 
-    }
+    // update text of modal
+    $("#drink-save-shop-list").text("Update Shopping List");
 
     // populate to shopping list right away 
-    populateDrinkShoppingList(name, id, ingredients, image, addIngredients);
+    populateDrinkShoppingList(name, ingredients, image);
 
 }
 
@@ -394,10 +348,24 @@ var loadDrinkRecipeBook = function() {
     } else {
         return
     }
+}
+var loadDrinkShoppingList = function() {
+    var localData = JSON.parse(localStorage.getItem("drinkShoppingData"));
+    // check if empty before loading
+    if (localData) {
+        // update array to local storage
+        drinkShoppingData = localData;
+        // populate recipe book section with saved data
+        populateDrinkShoppingList(drinkShoppingData[0].drinkName, drinkShoppingData[0].drinkIngredients, drinkShoppingData[0].drinkImg);
+    } else {
+        return
+    }
 
 }
 // load / populate drink section of recipe book when page loads
 loadDrinkRecipeBook();
+// load / populate shopping list section when page loads
+loadDrinkShoppingList();
 // submit listener
 $("#search-form").on("submit", submitHandler);
 
