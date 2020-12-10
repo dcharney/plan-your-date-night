@@ -1,11 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css'/>
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Plan Your Date Night</title>
 </head>
+
 <body>
-    
+    <header>
+        <div class="grid-x">
+            <h1 class="cell small-9"><a href="#search-section">Plan Your Date Night</a></h1>
+            <h2 id="recipe-book-btn" class="cell small-3"><a href="#recipe-section">Recipe Book</a></h2>
+        </div>
+    </header>
+
+    <main>
+        <!-- Search Section -->
+        <section id="search-section" class="grid-y search-section">
+            <h1> Find Recipes </h1>
+            <form id="search-form" class="grid-y">
+                <input id="protein-search" class="search active" name="protein" type="text" autofocus="true"
+                    placeholder="Search Meal Ingredient" />
+                <input id="liquor-search" class="search" name="liquor" type="text" placeholder="Search Liquor" />
+                <input type="submit" style="display: none;"></button>
+                <!-- Wrapper to append the suggestions ul element -->
+                <div id="suggestions-wrapper"></div>
+                <!-- Circle indicator that swaps to corresponding input searchbar -->
+                <div class="grid-x circle-indicator-wrapper">
+                    <div id="circle-indicator-1" class="cell small-2 circle-indicator active"></div>
+                    <div id="circle-indicator-2" class="cell small-2 circle-indicator"></div>
+                </div>
+            </form>
+            <!-- Inserting bg image -->
+            <div class="bg-img-wrapper">
+                <img src="./assets/images/search-bg.png">
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" class="grid-y">
+            <div class="grid-container result-container">
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell">
+                        <h1>Recipe Results</h1>
+                    </div>
+                </div>
+                <div id="food-drink-wrapper-id" class="food-drinks-wrapper grid-x grid-padding-x grid-padding-y">
+                    <div class="cell large-6 medium-6 small-12 result-container meal-results-container">
+                        <h2> Food</h2>
+                        <div class="grid-container-fluid scroll-wrapper meal-results-scroller">
+                            <div id="meal-results" class="grid-x results">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell large-6 medium-6 small-12 result-container drink-results-container">
+                        <h2> Drink</h2>
+                        <div class="grid-container-fluid scroll-wrapper drink-results-scroller">
+                            <div id="drink-results" class="grid-x results">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inserting bg image -->
+            <div class="bg-img-wrapper">
+                <img src="./assets/images/results-bg.png">
+            </div>
+        </section>
+        <!-- End Results Section -->
+
+        <!-- Food Highlight Section -->
+        <section id="meal-modal" class="modal grid-y large reveal">
+            <div class="cell modal-title">
+                <h1 id="meal-name">Insert Food Name</h1>
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="save-item-container cell-container cell grid-x">
+                <div class="cell cell-card large-4">
+                    <div class="circular-image" id="meal-highlight-img">
+                        <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
+                    </div>
+                     </div>
+                <div class="cell cell-details large-8" id="meal-highlight-details"> Lorem ipsum dolor sit, amet consectetur
+                    adipisicing elit. Dolor vero aut delectus magni dolorum, molestiae cumque?</div>
+            </div>
+            <div class="cell save-btn-wrapper">
+                <h3 data-mealId="" id="meal-save-btn">Save To Recipe Book</h3>
+                <h3 data-mealId="" id="meal-save-shop-list">Update Shopping List</h3>
+            </div>
+        </section>
+
+        <!-- Drink Highlight Section -->
+        <section id="drink-modal" class="modal grid-y large reveal" data-reveal>
+            <div class="cell modal-title">
+                <h1 id="drink-name">Insert Drink Name</h1>
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="save-item-container grid-x">
+                <div class="cell cell-card large-4">
+                    <div class="circular-image" id="drink-highlight-img">
+                    </div>
+                </div>
+                <div class="cell cell-details large-8" id="drink-highlight-details">
+                    Insert Drink Data
+                </div>
+            </div>
+            <div class="cell save-btn-wrapper">
+                <h3 data-drinkId="" id="save-btn">Save To Recipe Book</h3>
+                <h3 data-drinkId="" id="drink-save-shop-list">Update Shopping List</h3>
+            </div>
+        </section>
+        <!--end of results-->
+
+        <!-- Shopping List Section -->
+        <section id="shopping-section" class="grid-y">
+            <div class="grid-container shopping-container">
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell">
+                        <h1>Shopping List</h1>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell large-6 recipe-container shop-list-wrapper">
+                        <h2> Meals</h2>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="meals-shopping" class="grid-x results">
+                                <div class="cell result-cell" id="">
+                                    <h5 id="meal-name-shopping"></h5>
+                                    <ul id="meal-ul-shopping">
+                                    </ul>
+                                    <div class="bg-img-wrapper-small">
+                                        <img id="meal-shopping-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                    <div class="cell large-6 recipe-container shop-list-wrapper">
+                        <h2> Drinks</h2>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="drinks-shopping" class="grid-x results">
+                                <div class="cell result-cell" id="">
+                                    <h5 id="drink-name-shopping"></h5>
+                                    <ul id="drink-ul-shopping">
+                                    </ul>
+                                    <div class="bg-img-wrapper-small">
+                                        <img id="drink-shopping-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Inserting bg image -->
+            <div class="bg-img-wrapper">
+                <img src="./assets/images/results-bg.png">
+            </div>
+        </section>    
+
+        <!-- Recipe Book Section -->
+        <section id="recipe-section" class="grid-y">
+            <div class="grid-container result-container">
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell">
+                        <h1>Recipe Book</h1>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x grid-padding-y recipe-wrapper">
+                    <div class="cell large-6 medium-6 small-12 meal-recipe-container">
+                        <h2> Foods Saved</h2>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="meals-saved" class="grid-x results">
+                            </div>
+                        </div>
+                    </div>        
+                    <div class="cell large-6 medium-6 small-12 recipe-container drink-recipe-container">
+                        <h2> Drinks Saved</h2>
+                        <div class="grid-container-fluid scroll-wrapper drink-recipe-scroller">
+                            <div id="drinks-saved" class="grid-x results">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inserting bg image -->
+            <div class="bg-img-wrapper">
+                <img src="./assets/images/recipes-bg.png">
+            </div>
+        </section>
+    </main>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.core.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.mediaQuery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.touch.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.keyboard.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.reveal.min.js'></script>
+    <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
