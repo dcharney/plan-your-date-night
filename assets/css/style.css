@@ -139,7 +139,6 @@ header h2 a:hover {
     cursor: pointer;
 }
 
-/*
 .search-section form div .circle-indicator {
     width: 15px;
     height: 15px;
@@ -153,6 +152,5 @@ header h2 a:hover {
 .search-section form div .circle-indicator.active {
     background-color: rgb(176 176 176 / 45%);
 }
-*/
 /* SEARCH SECTION END */
 
