@@ -22,6 +22,8 @@ var drinks = [];
 
 //recipe book save data
 var drinkRecipeBookData = [];
+// shopping list save data
+var drinkShoppingData = [];
 
 
 // push data from api to food array
@@ -292,6 +294,25 @@ var populateDrinkRecipeBook = function(name, image, id, addRecipe) {
     }
 }
 
+var populateDrinkShoppingList = function(name, ingredients, image) {
+
+    // add text data-title of drink
+    $("#drink-name-shopping").text("Ingredients for the drink: " + name);
+
+    // make ul empty then fill with list elements
+    $("#drink-ul-shopping").html("");
+    // create list eleements
+    ingredients.forEach(element => {
+        var ingredient = document.createElement("li");
+        $(ingredient).text(element);
+        // put list items in UL
+        $("#drink-ul-shopping").append(ingredient); 
+    });
+
+    // add data-img
+    $("#drink-shopping-img").attr("src", image);
+}
+
 // save & remove recipe function
 var saveDrinkRecipe = function(event) {
     // grab drink name
@@ -335,6 +356,35 @@ var saveDrinkRecipe = function(event) {
 
 }
 
+var saveDrinkShopList = function(event) {
+    // grab drink name
+    var name = $(event.target).closest("#drink-modal").find("#drink-name").text();
+    // grab drink unique id
+    var id = $(event.target).attr("data-drinkId");
+    // grab ingredients
+    var ingredientsText = $(event.target).closest("#drink-modal").find("#drink-ingredients").text();
+    // grab image
+    var image = $(event.target).closest("#drink-modal").find("img").attr('src');
+    // remove the ingredients text from string
+    ingredientsText = ingredientsText.split(':').pop();
+    // turn into array by seperating from comma
+    var ingredients = ingredientsText.split(',');
+
+    // update shopping data
+    var shoppingData = {drinkName: name, drinkIngredients: ingredients, drinkImg: image};
+    drinkShoppingData.push(shoppingData);
+
+    // update local storage to array
+    localStorage.setItem('drinkShoppingData', JSON.stringify(drinkShoppingData));
+
+    // update text of modal
+    $("#drink-save-shop-list").text("Update Shopping List");
+
+    // populate to shopping list right away 
+    populateDrinkShoppingList(name, ingredients, image);
+
+}
+
 // load drink local storage data
 var loadDrinkRecipeBook = function() {
     var localData = JSON.parse(localStorage.getItem("drinkRecipeBookData"));
@@ -349,10 +399,21 @@ var loadDrinkRecipeBook = function() {
     } else {
         return
     }
+}
+var loadDrinkShoppingList = function() {
+    var localData = JSON.parse(localStorage.getItem("drinkShoppingData"));
+    // check if empty before loading
+    if (localData) {
+        // update array to local storage
+        drinkShoppingData = localData;
+        // populate recipe book section with saved data
+        populateDrinkShoppingList(drinkShoppingData[0].drinkName, drinkShoppingData[0].drinkIngredients, drinkShoppingData[0].drinkImg);
+    } else {
+        return
+    }
 
 }
-// load / populate drink section of recipe book when page loads
-loadDrinkRecipeBook();
+
 //push meal array into results container
 var mealResults = function(data) {
         data.meals.forEach(element => {
@@ -439,7 +500,10 @@ var mealClicked = function(event) {
     fetchMealInfo(idMeal);
 }
 
-
+// load / populate drink section of recipe book when page loads
+loadDrinkRecipeBook();
+// load / populate shopping list section when page loads
+loadDrinkShoppingList();
 // submit listener
 $("#search-form").on("submit", submitHandler);
 
@@ -466,3 +530,5 @@ $(drinksSavedEl).on("click", drinkClicked);
 $("#save-btn").on("click", saveDrinkRecipe);
 // meal selected listener
 $(mealResultsEl).on("click", mealClicked);
+// save to shopping list listener
+$("#drink-save-shop-list").on("click", saveDrinkShopList);
