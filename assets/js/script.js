@@ -4,7 +4,10 @@ var liquorSearchEl = $("#liquor-search");
 var proteinSearchEl = $("#protein-search");
 var circleIndicatorOneEl = $("#circle-indicator-1");
 var circleIndicatorTwoEl = $("#circle-indicator-2");
-
+// Array for meal suggestions
+var meals = [];
+// Array for drink suggestions
+var drinks = [];
 /*
 -----------------------    SCROLL HANDLING SECTION    ----------------------
 */
@@ -26,34 +29,39 @@ var submitHandler = function(event) {
 
     // switch to second input field if on first one
     if(circleIndicatorOneEl.hasClass("active") ) {
-        // removing visibility from first input and circle indicator
-        proteinSearchEl.removeClass("active");
-        circleIndicatorOneEl.removeClass("active");
-
-        // adding visibility to second input and circle indicator and focus on input
-        liquorSearchEl.addClass("active");
-        circleIndicatorTwoEl.addClass("active");
-        liquorSearchEl.focus();
-
-    } else { // user is on second field(liquor input)
         // check if user added protein and liquor before sending data
-        if(!proteinSearchEl.val() || proteinSearchEl.val() == " ") {
-            console.log("no meal ingredient entered");
+        if(!proteinSearchEl.val() || !meals.includes(proteinSearchEl.val())) {
+            $(proteinSearchEl)
+                .val("")
+                .attr("placeholder", "Invalid ingredient, try again");
+            return;
         } else {
             // fetch food function here
             fetchMealSearch(proteinSearchEl.val());
+        
+            // removing visibility from first input and circle indicator
+            proteinSearchEl.removeClass("active");
+            circleIndicatorOneEl.removeClass("active");
+            
+            // adding visibility to second input and circle indicator and focus on input
+            liquorSearchEl.addClass("active");
+            circleIndicatorTwoEl.addClass("active");
+            liquorSearchEl.focus();
         }
 
-        if(!liquorSearchEl.val() || liquorSearchEl.val() == " ") { // if not valid or just empty spaces
-            console.log("no liquor entered");
+    } else { // user is on second field(liquor input)
+        if(!liquorSearchEl.val() || !drinks.includes(liquorSearchEl.val()) ) { // if not valid or just empty spaces
+            $(liquorSearchEl)
+                .val("")
+                .attr("placeholder", "Invalid ingredient, try again");
+            return;
         } else {
             fetchLiquorSearch(liquorSearchEl.val());
+            // scroll to results section after search
+            mainEl[0].scrollTo(0, $('#results-section').offset().top);
+            enableScroll();
         }
-        // scroll to results section after search
-        mainEl[0].scrollTo(0, $('#results-section').offset().top);
-        enableScroll();
     }
-
 }
 
 /*
@@ -62,8 +70,6 @@ var submitHandler = function(event) {
 //Element vars
 var mealResultsEl = $("#meal-results");
 var mealsSavedEl = $("#meals-saved");
-// Array for local storage
-var meals = [];
 //recipe book data
 var mealRecipeBookData = [];
 //shopping list data
@@ -351,8 +357,6 @@ var loadMealShoppingList = function() {
 //Element vars
 var drinkResultsEl = $("#drink-results");
 var drinksSavedEl = $("#drinks-saved");
-// Array for local storage
-var drinks = [];
 //recipe book save data
 var drinkRecipeBookData = [];
 // shopping list save data
