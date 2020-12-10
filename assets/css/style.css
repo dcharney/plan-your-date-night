@@ -13,7 +13,7 @@ body {
     font-weight: 100;
 }
 
-/* Background Images start */
+/* BACKGROUND IMAGES START */
 main {
     height: 100vh;
     overflow-y: scroll;
@@ -37,10 +37,10 @@ section {
     width: 100%;
     height: 100%;
 }
-/* Background Images End */
+/* BACKGROUND IMAGES END */
 
 
-/* Header Start */
+/* HEADER START */
 header {
     position: absolute;
     width: 100%;
@@ -69,10 +69,10 @@ header h2 a:hover {
     text-shadow: 0 0 2px white;
     color: white;
 }
-/* Header End */
+/* HEADER END */
 
 
-/* Search Section Start */
+/* SEARCH SECTION START */
 .search-section {
     align-items: center;
 }
@@ -105,23 +105,17 @@ header h2 a:hover {
     color: whitesmoke;
 }
 
-/*
 .search-section form {
     align-items: center;
 }
 
-
-
-.search-section form input.search.active {
-    display: block;
-}
-
 .search-section form #suggestions-wrapper {
-    border-radius: 20px;
+    /*
     border-style: none;
+    margin-bottom: 5px;*/
+    border-radius: 20px;
     width: 300px;
     background-color: rgb(176 176 176 / 45%);
-    margin-bottom: 5px;
 }
 
 .search-section form #suggestions-wrapper ul {
@@ -145,7 +139,7 @@ header h2 a:hover {
     cursor: pointer;
 }
 
-
+/*
 .search-section form div .circle-indicator {
     width: 15px;
     height: 15px;
@@ -160,5 +154,5 @@ header h2 a:hover {
     background-color: rgb(176 176 176 / 45%);
 }
 */
-/* Search Section End */
+/* SEARCH SECTION END */
 
