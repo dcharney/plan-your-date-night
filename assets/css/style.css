@@ -390,7 +390,7 @@ header h2 a {
     padding-right: 75px;
     border-radius: 25px;
     border: none;
-
+    cursor: pointer;
 }
 
 #save-btn, #drink-save-shop-list, #meal-save-btn, #meal-save-shop-list {
