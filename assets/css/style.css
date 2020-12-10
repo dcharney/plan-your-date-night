@@ -48,7 +48,10 @@ section {
     width: 100%;
     height: 100%;
 }
-
+/* stops white bar from appearing at bottom of html*/
+.ui-helper-hidden-accessible {
+    display: none;
+}
 /* Main Header Start */
 header {
     position: absolute;
@@ -249,6 +252,15 @@ header h2 a {
     font-size: 1.8em;
 }
 
+.shop-list-wrapper {
+    height: 500px;
+    overflow: hidden;
+}
+.shop-list-wrapper .scroll-wrapper {
+    height: 100%;
+    overflow-y: scroll;
+}
+
 /* Shopping-list Styles End
 /* Recipe Section Start */
 
@@ -350,13 +362,11 @@ header h2 a {
     justify-content: center;
 }
 
-.food-source-link,
-.food-source {
+.meal-source-link, .meal-source {
     padding-left: 230px;
 }
 
-#food-highlight-details,
-#drink-highlight-details {
+#meal-highlight-details, #drink-highlight-details{
     padding: 50px;
     line-height: 2;
 }
@@ -383,7 +393,7 @@ header h2 a {
 
 }
 
-#save-btn, #meal-save-btn, #meal-save-shop-list {
+#save-btn, #drink-save-shop-list, #meal-save-btn, #meal-save-shop-list {
     padding: .75em;
     border: 1px #ddd solid;
     background: linear-gradient(to right, rgba(80, 80, 80, 0.411),rgba(80, 80, 80, 0.411));
@@ -396,7 +406,7 @@ header h2 a {
 
 }
 
-#save-btn:hover, #meal-save-btn:hover, #meal-save-shop-list:hover {
+#save-btn:hover, #drink-save-shop-list:hover, #meal-save-btn:hover, #meal-save-shop-list:hover {
     background-size: 100% 100%;
 }
 
@@ -507,3 +517,4 @@ header h2 a {
         overflow: hidden;
     }
 }
+/* Global Styles */
