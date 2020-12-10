@@ -10,12 +10,14 @@ suggestions = [];
 searchTools = {
     meals:{
         listURL:"https://www.themealdb.com/api/json/v1/1/list.php?i=list",
+        indexSearchURL:"https://www.themealdb.com/api/json/v1/1/filter.php?i=",
         targetContainer:"meals",
         targetElement:"strIngredient",
         searchTerm:""
     }, 
     drinks:{
         listURL:"https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list",
+        indexSearchURL:"https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=",
         targetContainer:"drinks",
         targetElement:"strIngredient1",
         searchTerm:""
@@ -88,14 +90,37 @@ var submitHandler = function(event) {
     } else { 
         // save current search term
         searchTools.drinks.searchTerm = searchEl.val();
-        // scroll to results section
+        // enable scrolling and scroll to results section
+        mainEl.attr("overflow-y","scroll");
         mainEl[0].scrollTo(0, $('#results-section').offset().top);
         // populate results
         //fetchLiquorSearch(liquorSearchEl.val());
+        generateResults();
     }
 }
 // END SEARCH FUNCTIONS
 
+// START RESULTS FUNCTIONS
+var generateResults = function() {
+    var indexSearchURL = searchTools.drinks.indexSearchURL;
+    // liquor
+    fetch(indexSearchURL + keyword)
+        .then(function(response) {
+            if(response.ok) {
+                response.json().then(function(data) {
+                    // run drink results for searched liquor; function
+                    drinkResults(data);
+                });
+            } else {
+                console.log("the searched term did not respond valid data");
+            }
+        });
+}
+// step 1: fetch data from api
+// step 2: build cells in results containers and append to element
+
+
+// END RESULTS FUNCTIONS
 
 // START UP FUNCTIONS
 // assign search suggestions (autocomplete) to input elements
