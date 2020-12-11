@@ -421,6 +421,12 @@ header h2 a {
     background-size: 100% 100%;
 }
 
+#save-btn:active, #drink-save-shop-list:active, #meal-save-btn:active, #meal-save-shop-list:active {
+    background: linear-gradient(to right, rgba(99, 173, 130, 0.658), rgba(99, 173, 130, 0.658));
+    background-size: 0 100%;
+    transition: background-size 4s 4s;
+}
+
 
 /* Media Queries */
 
