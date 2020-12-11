@@ -138,9 +138,10 @@ var openMealModal = function(data) {
     $("#meal-save-btn")
         .text(saveText)
         .attr('data-mealId', mealId);
+        
     // update meal name in modal
     $("#meal-name").text(mealName);
-    // update meal details: add category, alchohol, glass, instructions, ingredients
+    // update meal details: instructions, ingredients
     $("#meal-highlight-details").html(
         "<p>Instructions: "+ instructions + "</p>" +
         "<br>" +

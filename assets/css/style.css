@@ -396,10 +396,8 @@ header h2 a {
 #save-btn, #drink-save-shop-list, #meal-save-btn, #meal-save-shop-list {
     padding: .75em;
     border: 1px #ddd solid;
-    background: linear-gradient(to right, rgba(80, 80, 80, 0.411),rgba(80, 80, 80, 0.411));
+    background: rgba(80, 80, 80, 0.411);
     background-repeat: no-repeat;
-    background-size: 0 100%;
-    transition: background-size 1s 0s;
     width: 100%;
     border-radius: 25px;
     border:none;
@@ -408,6 +406,13 @@ header h2 a {
 
 #save-btn:hover, #drink-save-shop-list:hover, #meal-save-btn:hover, #meal-save-shop-list:hover {
     background-size: 100% 100%;
+    color: lightsteelblue;
+}
+
+#save-btn:active, #drink-save-shop-list:active, #meal-save-btn:active, #meal-save-shop-list:active {
+    background: linear-gradient(to right, rgba(99, 173, 130, 0.658), rgba(99, 173, 130, 0.658));
+    background-size: 0 100%;
+    transition: background-size 4s 4s;
 }
 
 
