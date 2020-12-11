@@ -23,7 +23,7 @@
             <h1> Find Recipes </h1>
             <form id="search-form" class="grid-y">
                 <input id="protein-search" class="search active" name="protein" type="text" autofocus="true"
-                    placeholder="Search Protein" />
+                    placeholder="Search Meal Ingredient" />
                 <input id="liquor-search" class="search" name="liquor" type="text" placeholder="Search Liquor" />
                 <input type="submit" style="display: none;"></button>
                 <!-- Wrapper to append the suggestions ul element -->
@@ -74,31 +74,25 @@
         <!-- End Results Section -->
 
         <!-- Food Highlight Section -->
-        <section id="food-modal" class="grid-y large reveal">
+        <section id="meal-modal" class="modal grid-y large reveal">
             <div class="cell modal-title">
-                <h1>Insert Food Name</h1>
+                <h1 id="meal-name">Insert Food Name</h1>
                 <button class="close-button" data-close aria-label="Close modal" type="button">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="save-item-container cell-container cell grid-x">
                 <div class="cell cell-card large-4">
-                    <div class="circular-image" id="food-highlight-img">
+                    <div class="circular-image" id="meal-highlight-img">
                         <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
                     </div>
-                    <h4 class="food-source-link">Link</h4>
-                    <p class="food-source">Source</p>
-                </div>
-                <div class="cell cell-details large-8" id="food-highlight-details"> Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit. Dolor vero aut delectus magni dolorum, molestiae cumque? Repellendus laborum harum
-                    inventore nihil recusandae ipsam, temporibus dolorum accusamus enim asperiores alias iusto! Lorem
-                    ipsum dolor sit amet consectetur adipisicing elit. Maiores, est! Aliquam sapiente facilis blanditiis
-                    eos cumque possimus unde consectetur adipisci rem, fuga, inventore alias dolorem distinctio iure
-                    sunt nulla nisi? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem dicta reiciendis
-                    nihil corporis hic harum, error nesciunt soluta quisquam commodi quibusdam minus distinctio qui
-                    molestiae! Consequuntur fugit tenetur dolorum consequatur. Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit. Molestias quam consequuntur, qui nemo neque quas id iusto. Tempora a, temporibus
-                    ducimus unde eveniet repellendus blanditiis iste modi officia laboriosam ea! </div>
+                     </div>
+                <div class="cell cell-details large-8" id="meal-highlight-details"> Lorem ipsum dolor sit, amet consectetur
+                    adipisicing elit. Dolor vero aut delectus magni dolorum, molestiae cumque?</div>
+            </div>
+            <div class="cell save-btn-wrapper">
+                <h3 data-mealId="" id="meal-save-btn">Save To Recipe Book</h3>
+                <h3 data-mealId="" id="meal-save-shop-list">Update Shopping List</h3>
             </div>
         </section>
 
@@ -121,75 +115,58 @@
             </div>
             <div class="cell save-btn-wrapper">
                 <h3 data-drinkId="" id="save-btn">Save To Recipe Book</h3>
+                <h3 data-drinkId="" id="drink-save-shop-list">Update Shopping List</h3>
             </div>
         </section>
         <!--end of results-->
 
-        <!-- Food Highlight Section -->
-        <section id="meal-modal" class="grid-y large reveal">
-            <div class="cell modal-title">
-                <h1>Insert Food Name</h1>
-                <button class="close-button" data-close aria-label="Close modal" type="button">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="save-item-container cell-container cell grid-x">
-                <div class="cell cell-card large-4">
-                    <div class="circular-image" id="food-highlight-img">
-                        <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
-                    </div>
-                    <h4 class="meal-source-link">Link</h4>
-                    <p class="meal-source">Source</p>
-                </div>
-                <div class="cell cell-details large-8" id="meal-highlight-details"> Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit.</div>
-            </div>
-        </section>
-
-         <!-- Drink Highlight Section -->
-        <section id="drink-modal" class="modal grid-y large reveal" data-reveal>
-            <div class="cell modal-title">
-                <h1 id="drink-name">Insert Drink Name</h1>
-                <button class="close-button" data-close aria-label="Close modal" type="button">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="save-item-container grid-x">
-                <div class="cell cell-card large-4">
-                    <div class="circular-image" id="drink-highlight-img">
-                        <img src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211012.jpg" />
-                    </div>
-                </div>
-                <div class="cell cell-details large-8" id="drink-highlight-details"> Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit.</div>
-            </div>
-        </section>
-
-
         <!-- Shopping List Section -->
         <section id="shopping-section" class="grid-y">
-
             <div class="grid-container shopping-container">
-                <h1>Shopping List</h1>
-                <div id="shopping-container" class="grid-x grid-padding-x grid-padding-y">
-                    <div class="cell shopping-list">
-                        <h1> Use the "li" in id="shopping-list" container to insert the shopping list items. </h1>
-                        <ul class="shopping-list-container">
-                            <li> 1. eggs </li>
-                            <li> 2. milk </li>
-                            <li> 3. rice </li>
-                            <li> 4. Beef </li>
-                            <li> 5. etc. </li>
-                        </ul>
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell">
+                        <h1>Shopping List</h1>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell large-6 recipe-container shop-list-wrapper">
+                        <h2> Meals</h2>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="meals-shopping" class="grid-x results">
+                                <div class="cell result-cell" id="">
+                                    <h5 id="meal-name-shopping"></h5>
+                                    <ul id="meal-ul-shopping">
+                                    </ul>
+                                    <div class="bg-img-wrapper-small">
+                                        <img id="meal-shopping-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell large-6 recipe-container shop-list-wrapper">
+                        <h2> Drinks</h2>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="drinks-shopping" class="grid-x results">
+                                <div class="cell result-cell" id="">
+                                    <h5 id="drink-name-shopping"></h5>
+                                    <ul id="drink-ul-shopping">
+                                    </ul>
+                                    <div class="bg-img-wrapper-small">
+                                        <img id="drink-shopping-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
 
             <!-- Inserting bg image -->
             <div class="bg-img-wrapper">
                 <img src="./assets/images/results-bg.png">
             </div>
-
         </section>
 
         <!-- Recipe Book Section -->
@@ -203,50 +180,8 @@
                 <div class="grid-x grid-padding-x grid-padding-y recipe-wrapper">
                     <div class="cell large-6 medium-6 small-12 meal-recipe-container">
                         <h2> Foods Saved</h2>
-                        <div class="grid-container-fluid scroll-wrapper meal-recipe-scroller">
-                            <div id="meal-recipe" class="grid-x">
-                                <div class="cell large-4 medium-4 small-6 recipe-cell">
-                                    <img class="cell"
-                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
-                                    <div class="recipe-bg">
-                                        <h4 class="recipe"> 1</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 medium-4 small-6 recipe-cell">
-                                    <img class="cell"
-                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
-                                    <div class="recipe-bg">
-                                        <h4 class="recipe"> 2</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 medium-4 small-6 recipe-cell">
-                                    <img class="cell"
-                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
-                                    <div class="recipe-bg">
-                                        <h4 class="recipe"> 3</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 medium-4 small-6 recipe-cell">
-                                    <img class="cell"
-                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
-                                    <div class="recipe-bg">
-                                        <h4 class="recipe"> 4</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 medium-4 small-6 recipe-cell">
-                                    <img class="cell"
-                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
-                                    <div class="recipe-bg">
-                                        <h4 class="recipe"> 5</h4>
-                                    </div>
-                                </div>
-                                <div class="cell large-4 medium-4 small-6 recipe-cell">
-                                    <img class="cell"
-                                        src="https://st2.depositphotos.com/2287637/5888/i/600/depositphotos_58888553-stock-photo-sliced-medium-rare-grilled-beef.jpg" />
-                                    <div class="recipe-bg">
-                                        <h4 class="recipe"> 6</h4>
-                                    </div>
-                                </div>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="meals-saved" class="grid-x results">
                             </div>
                         </div>
                     </div>
@@ -260,22 +195,20 @@
                 </div>
             </div>
 
-
             <!-- Inserting bg image -->
             <div class="bg-img-wrapper">
                 <img src="./assets/images/recipes-bg.png">
             </div>
         </section>
-
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.core.min.js'></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.mediaQuery.min.js'></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.touch.min.js'></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.keyboard.min.js'></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.reveal.min.js'></script>
-        <script src="./assets/js/script.js"></script>
     </main>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.core.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.mediaQuery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.touch.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.util.keyboard.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.reveal.min.js'></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
