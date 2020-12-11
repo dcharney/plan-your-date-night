@@ -7,31 +7,39 @@ var circleIndicatorTwoEl = $("#circle-indicator-2");
 // build arrays to store local data
 suggestions = [];
 
-searchTools = {
-    meals:{
-        listURL:"https://www.themealdb.com/api/json/v1/1/list.php?i=list",
-        indexSearchURL:"https://www.themealdb.com/api/json/v1/1/filter.php?i=",
-        targetContainer:"meals",
-        targetElement:"strIngredient",
-        searchTerm:""
-    }, 
-    drinks:{
-        listURL:"https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list",
-        indexSearchURL:"https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=",
-        targetContainer:"drinks",
-        targetElement:"strIngredient1",
-        searchTerm:""
-    }
-};
+// create data arrays of api type specific parameters so single functions can be used for both
+meals = {
+    listURL:"https://www.themealdb.com/api/json/v1/1/list.php?i=list",
+    indexSearchURL:"https://www.themealdb.com/api/json/v1/1/filter.php?i=",
+    targetContainer:"meals",
+    targetElement:"strIngredient",
+    searchTerm:"",
+    resultIcon:"strMealThumb",
+    resultTitle:"strMeal",
+    resultIdNo:"idMeal",
+    resultId:"#meal-results"
+}
+drinks = {
+    listURL:"https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list",
+    indexSearchURL:"https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=",
+    targetContainer:"drinks",
+    targetElement:"strIngredient1",
+    searchTerm:"",
+    resultIcon:"strDrinkThumb",
+    resultTitle:"strDrink",
+    resultIdNo:"idDrink",
+    resultId:"#drink-results"
+}
 
 // START AUTOCOMPLETE //
+
 // FUNCTION to fetch list of options from api to populate array of suggestions for search feature
 // IN: Array of values relevant to either meal or drink api
-var prepAutocomplete = function(searchArr) {
+var prepAutocomplete = function(type) {
     // unpack search array
-    var searchURL = searchArr.listURL;
-    var searchContainer = searchArr.targetContainer;
-    var searchElement = searchArr.targetElement;
+    var searchURL = type.listURL;
+    var searchContainer = type.targetContainer;
+    var searchElement = type.targetElement;
 
     // clear any existing suggestions
     suggestions = [];
@@ -57,10 +65,15 @@ var prepAutocomplete = function(searchArr) {
         autoFocus: true
     });
 }
+
 // END AUTOCOMPLETE //
 
+
+
 // START SEARCH FUNCTIONS
-// event handler for search form
+
+// FUNCTION to run whenever the input element on the search section is submitted, depending on the conditions of the submit (meal or drink), this function will trigger the appropriate respone
+// IN: event
 var submitHandler = function(event) {
     // prevent from refreshing page
     event.preventDefault();
@@ -74,14 +87,17 @@ var submitHandler = function(event) {
     // if meal is being submitted, transition to drink search
     if (circleIndicatorOneEl.hasClass("active")) {
         // save current search term
-        searchTools.meals.searchTerm = searchEl.val();
+        meals.searchTerm = searchEl.val();
+
+        // populate results
+        generateResults(meals);
 
         // clear input and update placeholder
         searchEl.val("");
         searchEl.attr("placeholder","Search Liquor");
 
         // update suggestions array
-        prepAutocomplete(searchTools.drinks);
+        prepAutocomplete(drinks);
 
         // update circle indication
         circleIndicatorOneEl.removeClass("active");
@@ -89,46 +105,107 @@ var submitHandler = function(event) {
         
     } else { 
         // save current search term
-        searchTools.drinks.searchTerm = searchEl.val();
+        drinks.searchTerm = searchEl.val();
+
+        // populate results
+        generateResults(drinks);
+
         // enable scrolling and scroll to results section
         mainEl.attr("overflow-y","scroll");
         mainEl[0].scrollTo(0, $('#results-section').offset().top);
-        // populate results
-        //fetchLiquorSearch(liquorSearchEl.val());
-        generateResults();
+
+        // reset search section
+        searchEl.val("");
+        searchEl.attr("placeholder","Search Liquor");
+        prepAutocomplete(meals);
+        circleIndicatorTwoEl.removeClass("active");
+        circleIndicatorOneEl.addClass("active");
     }
 }
+
 // END SEARCH FUNCTIONS
 
+
+
 // START RESULTS FUNCTIONS
-var generateResults = function() {
-    var indexSearchURL = searchTools.drinks.indexSearchURL;
-    // liquor
-    fetch(indexSearchURL + keyword)
+
+// FUNCTION to gather the search results and build the results elements
+// IN: Data Array containing result type and searched term
+var generateResults = function(type) {
+    // unpack data array
+    var targetContainer = type.targetContainer;
+    var indexSearchURL = type.indexSearchURL;
+    var searchTerm = type.searchTerm;
+    
+    // gather search result 
+    fetch(indexSearchURL + searchTerm)
         .then(function(response) {
             if(response.ok) {
                 response.json().then(function(data) {
                     // run drink results for searched liquor; function
-                    drinkResults(data);
+                    data[targetContainer].forEach(element => {
+                        generateResultElement(type, element);
+                    })
                 });
             } else {
                 console.log("the searched term did not respond valid data");
             }
         });
 }
-// step 1: fetch data from api
-// step 2: build cells in results containers and append to element
 
+// FUNCTION to build and append a single result cell to a result container
+// IN: element containing data from a single result
+var generateResultElement = function(type, element) {
+    // unpack data array
+    var resultIcon = type.resultIcon;
+    var resultTitle = type.resultTitle;
+    var resultIdNo = type.resultIdNo;
+    var resultEl = $(type.resultId);
+
+    // cell wrapper for individual result
+    var cellDiv = document.createElement("div");
+    // bg img/ result icon
+    var img = document.createElement("img");
+    // div wrapper for title
+    var h6Div = document.createElement("div");
+    // title
+    var h6 = document.createElement("h6");
+
+    // add classes needed to elements
+    $(cellDiv).addClass("cell large-4 result-cell");
+    $(h6Div).addClass("result-bg");
+    $(h6).addClass("result");
+
+    // add data-img
+    $(img).attr("src", element[resultIcon]);
+    // add text data-title of drink
+    $(h6).text(element[resultTitle]);
+    // set result id to cell id
+    $(cellDiv).attr("id", element[resultIdNo]);
+    
+    // put h4 in h4 wrapper
+    h6Div.append(h6);
+    // put h4 and img in cell
+    cellDiv.append(img, h6Div);
+    // append cell to results element
+    resultEl.append(cellDiv)
+}
 
 // END RESULTS FUNCTIONS
 
+
+
 // START UP FUNCTIONS
+
 // assign search suggestions (autocomplete) to input elements
-prepAutocomplete(searchTools.meals);
+prepAutocomplete(meals);
+
 // END START UP FUNCTIONS
 
 
+
 // EVENT HANDLERS START
+
 // add event handler to search section 
 $("#search-form").on("submit", submitHandler);
 

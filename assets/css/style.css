@@ -180,6 +180,15 @@ header h2 a:hover {
     position: relative;
 }
 
+.result-bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: .5vw;
+}
+
 .result {
     height: 100%;
     width: 100%;
