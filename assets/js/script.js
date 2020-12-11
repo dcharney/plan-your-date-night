@@ -569,7 +569,7 @@ var populateDrinkRecipeBook = function(name, image, id, addRecipe) {
         var h6 = document.createElement("h6");
 
         // add classes needed to elements
-        $(cellDiv).addClass("cell large-4 result-cell");
+        $(cellDiv).addClass("cell large-4 medium-4 small-6 result-cell");
         $(h6Div).addClass("result-bg");
         $(h6).addClass("result");
 

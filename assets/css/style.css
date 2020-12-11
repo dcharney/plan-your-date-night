@@ -315,6 +315,17 @@ header h2 a {
     padding: 5%;
 }
 
+.drink-recipe-container, .meal-recipe-container {
+    max-width: 600px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.meal-recipe-scroller, .drink-recipe-scroller {
+    height: 100%;
+    overflow: scroll;
+}
+
 /* Recipe Section End */
 
 
@@ -471,29 +482,24 @@ header h2 a {
         white-space: pre;
     }
 
+    /* shop list fix */
 
+
+    .shop-list-wrapper {
+        height: 325px;
+        overflow: hidden;
+    }
 
 
     /* Resizing Recipe */
 
-    .recipe-wrapper {
+
+    .drink-recipe-container, .meal-recipe-container {
         max-width: 360px;
-        height: 85%;
+        height: 325px;
         overflow: hidden;
     }
 
-    .recipe-wrapper .scroll-wrapper {
-        height: 100%;
-        overflow-y: scroll;
-    }
-
-    .drink-recipe-container {
-        height: 60%;
-    }
-
-    .meal-recipe-container {
-        height: 40%;
-    }
 
     .drink-recipe-container h2::before {
         content: "\A";
@@ -517,4 +523,3 @@ header h2 a {
         overflow: hidden;
     }
 }
-/* Global Styles */
