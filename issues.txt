@@ -1,0 +1,30 @@
+To Do:
+
+option bar only appears on second opening (drink and recipe book)
+meal not displaying correctly
+
+Add Selection to shopping list display
+
+finish presentation
+
+add footer and contact Section
+
+scrolling (white bar at bottom)
+
+automatic enter when suggestion clicked?
+
+Recipe Book grow animation on hover
+
+add click circle indicator function to toggle meal and drink submission
+
+highlight selected suggestion when using arrow keys to select
+
+cut off content from api and add a ...see more button
+limit length of text div and turn into scroll box
+
+drinks media queries
+
+
+scroll glitch after first search is submitted
+
+errors in console on deployed app
