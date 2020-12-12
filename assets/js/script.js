@@ -88,7 +88,7 @@ var submitHandler = function(event) {
         meals.searchTerm = searchEl.val();
 
         // populate results
-        generateResults(meals);
+        generateResults(meals, searchEl.val());
 
         // clear input and update placeholder
         searchEl.val("");
@@ -106,7 +106,7 @@ var submitHandler = function(event) {
         drinks.searchTerm = searchEl.val();
 
         // populate results
-        generateResults(drinks);
+        generateResults(drinks, searchEl.val());
 
         // enable scrolling and scroll to results section
         mainEl.attr("overflow-y","scroll");
@@ -132,11 +132,15 @@ var submitHandler = function(event) {
 
 // FUNCTION to gather the search results and build the results elements
 // IN: Data Array containing result type and searched term
-var generateResults = function(type) {
+var generateResults = function(type, searchTerm) {
     // unpack type array
     var targetContainer = type.targetContainer;
     var indexSearchURL = type.indexSearchURL;
-    var searchTerm = type.searchTerm;
+
+    // clear any existing result data from previous searches
+    var recipeContainerId = "#" + type.type.toLowerCase() + "-result";
+    var typeEl = $(recipeContainerId);
+    typeEl.html("");
     
     // gather search result 
     fetch(indexSearchURL + searchTerm)
@@ -153,8 +157,10 @@ var generateResults = function(type) {
         });
 }
 
-// FUNCTION to build and append a single result cell to a result container
-// IN: element containing data from a single result
+// FUNCTION to build and append a single recipe cell to the appropriate recipes container
+// IN: section = string to determine which <section> recipe cells are being added to
+//     type = Data Array containing search specific terms for the element data type (meal v. drink)
+//     data = api data for a single recipe
 var generateRecipeElement = function(section, type, data) {
     // unpack type array
     var recipeIcon = "str" + type.type + "Thumb";
@@ -226,7 +232,7 @@ var recipeClicked = function(event) {
 
 // FUNCTION to distinguish between meal and drink results
 // IN: some string that identifies if the data is meal or drink
-// OUT: type array containing necessary search terms for generating meal or drink modal
+// OUT: type array containing necessary search terms for meal or drink
 var getTypeArr = function(someString) {
     // create empty array to hold type
     var type = [];
@@ -280,7 +286,12 @@ var openModal = function(type, data) {
     $("#ingredients").text("Ingredients: " + modalIngredients);
 
     // switch save button text to remove from recipe book if result already saved
-    var saveText = "Save to Recipe Book";
+    var saveText = "";
+    if (recipeBookData.some(recipe => recipe.id === modalId)) {
+        saveText = "Remove from Recipe Book"
+    } else {
+        saveText = "Save to Recipe Book"
+    }
 
     // add result type and id to save bttn for easier event handling
     $("#recipe-save-btn")
@@ -300,8 +311,6 @@ var saveRecipe = function(event) {
     var id = $(event.target).attr("data-id");
     var type = $(event.target).attr("data-type");
 
-    console.log($(event.target));
-
     // add or remove var
     //var addRecipe = true;
 
@@ -309,7 +318,8 @@ var saveRecipe = function(event) {
     var recipeData = {type: type, id: id};
 
     // Find if the array already has recipe as object by comparing the property value
-    if(recipeBookData.some(recipe => recipe.id === id)){
+    if (recipeBookData.some(recipe => recipe.id === id)) {
+        console.log(recipeBookData);
         // delete if already saved (clicked "remove from recipe book)") by
         // updating recipe book var to not include this recipe
         recipeBookData = recipeBookData.filter(recipe => recipe.id !== id);
@@ -318,7 +328,7 @@ var saveRecipe = function(event) {
         // remove from recipe book
         // addRecipe = false;
         // update text of modal
-        $("#save-btn").text("Save To Recipe Book");
+        $("#recipe-save-btn").text("Save To Recipe Book");
 
     } else { 
         // not a duplicate so save (clicked "save to recipe book")
@@ -328,8 +338,7 @@ var saveRecipe = function(event) {
         // add to recipe book
         // addRecipe = true;
         // update text of modal
-        $("#save-btn").text("Remove From Recipe Book");
-        console.log("here!");
+        $("#recipe-save-btn").text("Remove From Recipe Book");
     }
 
     // populate to recipe book right away 
@@ -342,9 +351,15 @@ var saveRecipe = function(event) {
 
 // START RECIPE BOOK FUNCTIONS
 
+// FUNCTION grabs saved recipe ids from local storage and builds info into recipe cells
 var generateRecipeBook = function() {
+    // clear any existing result data from previous searches
+    $("#meal-recipes").html("");
+    $("#drink-recipes").html("");
+
     // get recipes from local storage
-    var recipeBookData = JSON.parse(localStorage.getItem("recipeBookData"));
+    recipeBookData = JSON.parse(localStorage.getItem("recipeBookData"));
+
     // check if empty before loading
     if (recipeBookData) {
         // populate recipe book section with saved data
