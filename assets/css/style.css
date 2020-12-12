@@ -1,6 +1,6 @@
 * {
     scroll-behavior: smooth;
-    font-family: 'Open Sans Light';
+    font-family: 'Open Sans', sans-serif !important;
 }
 
 ::-webkit-scrollbar {
@@ -94,7 +94,6 @@ header h2 a:hover {
     padding: 5px 0 5px 10px;
     margin: 10px;
     font-size: 20px;
-    font-family: inherit;
 }
 
 .search-section form input.search.active {
@@ -110,9 +109,6 @@ header h2 a:hover {
 }
 
 .search-section form #suggestions-wrapper {
-    /*
-    border-style: none;
-    margin-bottom: 5px;*/
     border-radius: 20px;
     width: 300px;
     background-color: rgb(176 176 176 / 45%);
@@ -186,7 +182,7 @@ header h2 a:hover {
     width: 100%;
     top: 0;
     left: 0;
-    padding: .5vw;
+    padding: 0.5vw;
 }
 
 .result {
@@ -197,6 +193,9 @@ header h2 a:hover {
     justify-content: center;
     display: flex;
     align-items: center;
+    text-align: center;
+    padding: 0.5vw;
+    font-family: Open Sans Light;
 }
 
 .result:hover {
@@ -210,4 +209,114 @@ header h2 a:hover {
     height: 100%;
 }
 /* RESULTS SECTION END */
+
+
+/* MODAL SECTION START */
+.reveal-overlay {
+    backdrop-filter: blur(5px);
+}
+
+#result-modal {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    justify-content: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.modal-title {
+    text-align: center;
+    padding: 100px 10px 0px 20px;
+    border-radius: 25px;
+}
+
+.circular-image {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 80%;
+    margin: 84px 25px 30px 25px;
+    display: flex;
+    justify-content: center;
+}
+
+#source {
+    margin: auto;
+    text-decoration: underline;
+    color:white;
+    font-size: 20px;
+}
+
+#source:hover {
+    text-shadow: 0 0 2px white;
+    color: white;
+}
+
+#source:visited {
+    color: rgb(101, 224, 255);
+}
+
+.save-item-container {
+    padding: 5px 75px 20px 75px;
+    border-radius: 25px;
+    height: 65vh;
+}
+
+.save-item-container .cell {
+    background-color: rgba(80, 80, 80, 0.411);
+}
+
+#result-highlight-details {
+    padding: 50px;
+    line-height: 2;
+}
+
+#instructions,
+#ingredients {
+    padding-right: 1%;
+}
+
+#instructions {
+    height: 40vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#instructions::-webkit-scrollbar {
+    display: revert !important;
+}
+
+#instructions::-webkit-scrollbar-track {
+    background-color: rgba(128, 128, 128, 0.6);
+}
+
+#instructions::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.cell-card {
+    border-radius: 25px 0 0 25px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.cell-details {
+    border-radius: 0 25px 25px 0;
+}
+
+.save-btn-wrapper {
+    justify-content: center;
+    text-align: center;
+    padding-left: 75px;
+    padding-right: 75px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+/* MODAL SECTION END */
 

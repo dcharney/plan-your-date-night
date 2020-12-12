@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css'/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Plan Your Date Night</title>
 </head>
@@ -73,11 +75,30 @@
         </section>
         <!-- End Results Section -->
 
-        <!-- Meal Modal Section -->
-        <!-- End Meal Modal Section -->
-
-        <!-- Drink Modal Section -->
-        <!-- End Drink Modal Section -->
+        <!-- Modal Section -->
+        <section id="result-modal" class="grid-y large reveal">
+            <div class="cell modal-title">
+                <h1 id="result-name">Insert Result Name</h1>
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="save-item-container grid-x">
+                <div class="cell cell-card large-4">
+                    <div class="circular-image" id="result-highlight-img"></div>
+                    <a id="source" href="">Link to Recipe</a>
+                </div>
+                <div class="cell cell-details large-8" id="result-highlight-details">
+                    <p id="instructions">Instructions</p>
+                    <p id="ingredients">Ingredients</p>
+                </div>
+            </div>
+            <div class="cell save-btn-wrapper">
+                <h3 class="save-btn" data-id="" data-type="">Save To Recipe Book</h3>
+                <h3 class="save-shop-list" data-id="" data-type="">Update Shopping List</h3>
+            </div>
+        </section>
+        <!-- End Modal Section -->
 
         <!-- Shopping List Section -->
         <section id="shopping-section" class="grid-y">
