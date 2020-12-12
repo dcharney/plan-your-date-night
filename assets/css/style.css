@@ -160,23 +160,23 @@ header h2 a:hover {
     margin-left: .5vw;
 }
 
-.results-wrapper {
+.recipes-wrapper {
     min-width: 958px;
     height: 75%;
     overflow: hidden;
 }
 
-.results-wrapper .scroll-wrapper {
+.recipes-wrapper .scroll-wrapper {
     height: 100%;
     overflow-y: scroll;
 }
 
-.result-cell {
+.recipe-cell {
     padding: .5vw;
     position: relative;
 }
 
-.result-bg {
+.recipe-bg {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -185,7 +185,7 @@ header h2 a:hover {
     padding: 0.5vw;
 }
 
-.result {
+.recipe {
     height: 100%;
     width: 100%;
     color: white;
@@ -198,12 +198,12 @@ header h2 a:hover {
     font-family: Open Sans Light;
 }
 
-.result:hover {
+.recipe:hover {
     background-color: rgba(0, 0, 0, 0);
     box-shadow: 0 0 5px black;
 }
 
-.results-container,
+.recipes-container,
 .shopping-container {
     padding: 5%;
     height: 100%;

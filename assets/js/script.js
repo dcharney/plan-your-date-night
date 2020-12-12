@@ -5,10 +5,11 @@ var circleIndicatorOneEl = $("#circle-indicator-1");
 var circleIndicatorTwoEl = $("#circle-indicator-2");
 
 // build arrays to store local data
-suggestions = [];
+var suggestions = [];
+var recipeBookData = [];
 
 // create data arrays of api type specific parameters so single functions can be used for both
-meals = {
+var meals = {
     listURL:"https://www.themealdb.com/api/json/v1/1/list.php?i=list",
     indexSearchURL:"https://www.themealdb.com/api/json/v1/1/filter.php?i=",
     idSearchURL:"https://www.themealdb.com/api/json/v1/1/lookup.php?i=",
@@ -17,7 +18,8 @@ meals = {
     searchTerm:"",
     type:"Meal"
 }
-drinks = {
+
+var drinks = {
     listURL:"https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list",
     indexSearchURL:"https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=",
     idSearchURL:"https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=",
@@ -138,9 +140,8 @@ var generateResults = function(type) {
         .then(function(response) {
             if(response.ok) {
                 response.json().then(function(data) {
-                    // run drink results for searched liquor; function
                     data[targetContainer].forEach(element => {
-                        generateResultElement(type, element);
+                        generateRecipeElement("results", type, element);
                     })
                 });
             } else {
@@ -151,13 +152,13 @@ var generateResults = function(type) {
 
 // FUNCTION to build and append a single result cell to a result container
 // IN: element containing data from a single result
-var generateResultElement = function(type, element) {
+var generateRecipeElement = function(section, type, data) {
     // unpack type array
-    var resultIcon = "str" + type.type + "Thumb";
-    var resultTitle = "str" + type.type;
-    var resultIdNo = "id" + type.type;
-    var resultContainerId = "#" + type.type.toLowerCase() + "-results";
-    var resultEl = $(resultContainerId);
+    var recipeIcon = "str" + type.type + "Thumb";
+    var recipeTitle = "str" + type.type;
+    var recipeIdNo = "id" + type.type;
+    var recipeContainerId = "#" + type.type.toLowerCase() + "-" + section;
+    var typeEl = $(recipeContainerId);
 
 
     // cell wrapper for individual result
@@ -170,23 +171,23 @@ var generateResultElement = function(type, element) {
     var h6 = document.createElement("h6");
 
     // add classes needed to elements
-    $(cellDiv).addClass("cell large-4 result-cell");
-    $(h6Div).addClass("result-bg");
-    $(h6).addClass("result");
+    $(cellDiv).addClass("cell large-4 recipe-cell");
+    $(h6Div).addClass("recipe-bg");
+    $(h6).addClass("recipe");
 
     // add data-img
-    $(img).attr("src", element[resultIcon]);
+    $(img).attr("src", data[recipeIcon]);
     // add text data-title of drink
-    $(h6).text(element[resultTitle]);
+    $(h6).text(data[recipeTitle]);
     // set result id to cell id
-    $(cellDiv).attr("id", element[resultIdNo]);
+    $(cellDiv).attr("id", data[recipeIdNo]);
     
     // put h4 in h4 wrapper
     h6Div.append(h6);
     // put h4 and img in cell
     cellDiv.append(img, h6Div);
     // append cell to results element
-    resultEl.append(cellDiv)
+    typeEl.append(cellDiv)
 }
 
 // END RESULTS FUNCTIONS
@@ -197,49 +198,22 @@ var generateResultElement = function(type, element) {
 
 // FUNCTION to run whenever a result cell is clicked, generates a modal to display the corresponding api data for the selected cell
 // IN: event object (cell being clicked)
-var resultClicked = function(event) {
+var recipeClicked = function(event) {
     // get container
-    var container = $(event.target).closest(".result-cell");
+    var container = $(event.target).closest(".recipe-cell");
     // get unique ip for api search
-    var resultId = $(container).attr("id");
+    var recipeId = $(container).attr("id");
 
     // get result type (meal or drink)
-    var type = getResultType(event);
-
-    // fetch api data for modal
-    fetchResultInfo(type, resultId);
-}
-
-// FUNCTION to distinguish between meal and drink results
-// IN: event object (cell being clicked)
-// OUT: type array containing necessary search terms for generating meal or drink modal
-var getResultType = function(event) {
-    // get result container id
-    var resultContainer = $(event.target).closest(".results");
-    var resultContainerId = resultContainer.attr("id");
-    var type = "";
-
-    // assign type based on id
-    if (resultContainerId == "meal-results") {
-        type = meals;
-    } else if (resultContainerId == "drink-results") {
-        type = drinks;
-    }
-    return type
-}
-
-// FUNCTION dafhaerhaerh
-// IN: ASDLKGJLJ
-var fetchResultInfo = function(type, resultId) {
-    // unpack data array
-    var idSearchURL = type.idSearchURL;
+    var recipeContainer = $(event.target).closest(".recipes");
+    var recipeContainerId = recipeContainer.attr("id");
+    var type = getTypeArr(recipeContainerId);
 
     // get api data for clicked result id
-    fetch(idSearchURL + resultId)
+    fetch(type.idSearchURL + recipeId)
         .then(function(response) {
             if(response.ok) {
                 response.json().then(function(data) {
-                    // display data in modal
                     openModal(type, data);
                 })
             } else {
@@ -248,6 +222,26 @@ var fetchResultInfo = function(type, resultId) {
         });
 }
 
+// FUNCTION to distinguish between meal and drink results
+// IN: some string that identifies if the data is meal or drink
+// OUT: type array containing necessary search terms for generating meal or drink modal
+var getTypeArr = function(someString) {
+    // create empty array to hold type
+    var type = [];
+
+    // assign array to type based on string input
+    if (someString.toLowerCase().includes("meal")) {
+        type = meals;
+    } else if (someString.toLowerCase().includes("drink")) {
+        type = drinks;
+    } else {
+        console.log("invalid argument passed to getTypeArr");
+    }
+    return type
+}
+
+// FUNCTION to build and open modal to display api info of cell clicked
+// IN: type array for meal or drink and api data of selected id
 var openModal = function(type, data) {
     // unpack type array
     var targetContainer = type.targetContainer;
@@ -287,7 +281,8 @@ var openModal = function(type, data) {
     var saveText = "Save to Recipe Book";
 
     // add result type and id to save bttn for easier event handling
-    $(".save-btn")
+    console.log(modalId);
+    $("#recipe-save-btn")
         .text(saveText)
         .attr('data-id', modalId)
         .attr('data-type', type.type);
@@ -297,7 +292,80 @@ var openModal = function(type, data) {
     modal.open();
 }
 
+// FUNCTION to save the id of the currently selected modal to the recipe book array
+// IN: event object (modal save button)
+var saveRecipe = function(event) {
+    // grab type and id from buton
+    var id = $(event.target).attr("data-id");
+    var type = $(event.target).attr("data-type");
+
+    console.log($(event.target));
+
+    // add or remove var
+    //var addRecipe = true;
+
+    // save to recipe book / local storage
+    var recipeData = {type: type, id: id};
+
+    // Find if the array already has recipe as object by comparing the property value
+    if(recipeBookData.some(recipe => recipe.id === id)){
+        // delete if already saved (clicked "remove from recipe book)") by
+        // updating recipe book var to not include this recipe
+        recipeBookData = recipeBookData.filter(recipe => recipe.id !== id);
+        // update local storage to array
+        localStorage.setItem('recipeBookData', JSON.stringify(recipeBookData));
+        // remove from recipe book
+        // addRecipe = false;
+        // update text of modal
+        $("#save-btn").text("Save To Recipe Book");
+
+    } else { 
+        // not a duplicate so save (clicked "save to recipe book")
+        recipeBookData.push(recipeData);
+        // update local storage to array
+        localStorage.setItem('recipeBookData', JSON.stringify(recipeBookData));
+        // add to recipe book
+        // addRecipe = true;
+        // update text of modal
+        $("#save-btn").text("Remove From Recipe Book");
+    }
+
+    // populate to recipe book right away 
+    generateRecipeBook();
+}
+
 // END MODAL FUNCTIONS
+
+
+
+// START RECIPE BOOK FUNCTIONS
+
+var generateRecipeBook = function() {
+    // get recipes from local storage
+    var recipeBookData = JSON.parse(localStorage.getItem("recipeBookData"));
+    // check if empty before loading
+    if (recipeBookData) {
+        // populate recipe book section with saved data
+        recipeBookData.forEach(recipe => {
+            var type = getTypeArr(recipe.type);
+            fetch(type.idSearchURL + recipe.id)
+                .then(function(response) {
+                    if(response.ok) {
+                        response.json().then(function(data) {
+                            console.log(data);
+                            generateRecipeElement("recipes", type, data);
+                        })
+                    } else {
+                        console.log("no good baby");
+                    }
+                });
+        });
+    } else {
+        console.log("no local storage");
+    }
+}
+
+// END RECIPE BOOK FUNCTIONS
 
 
 
@@ -305,6 +373,9 @@ var openModal = function(type, data) {
 
 // assign search suggestions (autocomplete) to input elements
 prepAutocomplete(meals);
+
+// generate recipe book from local storage
+generateRecipeBook();
  
 // END START UP FUNCTIONS
 
@@ -315,8 +386,11 @@ prepAutocomplete(meals);
 // add event handler to search section 
 $("#search-form").on("submit", submitHandler);
 
-// run function when a result is selected
-$(".results").on("click", resultClicked);
+// add event handler when a result cell is clicked
+$(".recipes").on("click", recipeClicked);
+
+// add event handler to save recipe button in modal
+$("#recipe-save-btn").on("click", saveRecipe);
 
 // EVENT HANDLERS END
 

@@ -44,24 +44,24 @@
 
         <!-- Results Section -->
         <section id="results-section" class="grid-y">
-            <div class="grid-container results-container">
+            <div class="grid-container recipes-container">
                 <div class="grid-x grid-padding-x grid-padding-y">
                     <div class="cell">
                         <h1>Recipe Results</h1>
                     </div>
                 </div>
-                <div class="results-wrapper grid-x grid-padding-x grid-padding-y">
-                    <div class="cell large-6 medium-6 small-12 results-container">
+                <div class="recipes-wrapper grid-x grid-padding-x grid-padding-y">
+                    <div class="cell large-6 medium-6 small-12 recipes-container">
                         <h2> Food</h2>
                         <div class="grid-container-fluid scroll-wrapper">
-                            <div id="meal-results" class="grid-x results">
+                            <div id="meal-results" class="grid-x recipes">
                             </div>
                         </div>
                     </div>
-                    <div class="cell large-6 medium-6 small-12 results-container">
+                    <div class="cell large-6 medium-6 small-12 recipes-container">
                         <h2> Drink</h2>
                         <div class="grid-container-fluid scroll-wrapper">
-                            <div id="drink-results" class="grid-x results">
+                            <div id="drink-results" class="grid-x recipes">
                             </div>
                         </div>
                     </div>
@@ -94,8 +94,8 @@
                 </div>
             </div>
             <div class="cell save-btn-wrapper">
-                <h3 class="save-btn" data-id="" data-type="">Save To Recipe Book</h3>
-                <h3 class="save-shop-list" data-id="" data-type="">Update Shopping List</h3>
+                <h3 id="recipe-save-btn" data-id="" data-type="">Save To Recipe Book</h3>
+                <h3 id="save-shop-list" data-id="" data-type="">Update Shopping List</h3>
             </div>
         </section>
         <!-- End Modal Section -->
@@ -112,6 +112,29 @@
 
         <!-- Recipe Book Section -->
         <section id="recipe-section" class="grid-y">
+            <div class="grid-container recipes-container">
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell">
+                        <h1>Recipe Results</h1>
+                    </div>
+                </div>
+                <div class="recipes-wrapper grid-x grid-padding-x grid-padding-y">
+                    <div class="cell large-6 medium-6 small-12 recipes-container">
+                        <h2> Food</h2>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="meal-recipes" class="grid-x recipes">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell large-6 medium-6 small-12 recipes-container">
+                        <h2> Drink</h2>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="drink-recipes" class="grid-x recipes">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Inserting bg image -->
             <div class="bg-img-wrapper">
