@@ -118,6 +118,9 @@ var submitHandler = function(event) {
         prepAutocomplete(meals);
         circleIndicatorTwoEl.removeClass("active");
         circleIndicatorOneEl.addClass("active");
+
+        // allow free scrolling of page
+        mainEl.css("overflow-y","scroll");
     }
 }
 
@@ -160,7 +163,6 @@ var generateRecipeElement = function(section, type, data) {
     var recipeContainerId = "#" + type.type.toLowerCase() + "-" + section;
     var typeEl = $(recipeContainerId);
 
-
     // cell wrapper for individual result
     var cellDiv = document.createElement("div");
     // bg img/ result icon
@@ -187,7 +189,7 @@ var generateRecipeElement = function(section, type, data) {
     // put h4 and img in cell
     cellDiv.append(img, h6Div);
     // append cell to results element
-    typeEl.append(cellDiv)
+    typeEl.append(cellDiv);
 }
 
 // END RESULTS FUNCTIONS
@@ -281,7 +283,6 @@ var openModal = function(type, data) {
     var saveText = "Save to Recipe Book";
 
     // add result type and id to save bttn for easier event handling
-    console.log(modalId);
     $("#recipe-save-btn")
         .text(saveText)
         .attr('data-id', modalId)
@@ -295,7 +296,7 @@ var openModal = function(type, data) {
 // FUNCTION to save the id of the currently selected modal to the recipe book array
 // IN: event object (modal save button)
 var saveRecipe = function(event) {
-    // grab type and id from buton
+    // grab type and id from button
     var id = $(event.target).attr("data-id");
     var type = $(event.target).attr("data-type");
 
@@ -328,6 +329,7 @@ var saveRecipe = function(event) {
         // addRecipe = true;
         // update text of modal
         $("#save-btn").text("Remove From Recipe Book");
+        console.log("here!");
     }
 
     // populate to recipe book right away 
@@ -352,8 +354,9 @@ var generateRecipeBook = function() {
                 .then(function(response) {
                     if(response.ok) {
                         response.json().then(function(data) {
-                            console.log(data);
-                            generateRecipeElement("recipes", type, data);
+                            data[type.targetContainer].forEach(element => {
+                                generateRecipeElement("recipes", type, element);
+                            })
                         })
                     } else {
                         console.log("no good baby");

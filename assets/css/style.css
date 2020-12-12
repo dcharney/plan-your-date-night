@@ -320,3 +320,15 @@ header h2 a:hover {
 
 /* MODAL SECTION END */
 
+
+/* RECIPES SECTION START */
+#recipe-section {
+    justify-content: center;
+}
+
+#recipe-section h2 {
+    margin-left: .5vw;
+}
+
+/* RECIPES SECTION END */
+
