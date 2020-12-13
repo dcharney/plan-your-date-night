@@ -32,3 +32,5 @@ reformat instructions into proper list
 add a span after x num character and then hide/unhide that class when see more is selected
 
 add left right arrows when modal selected
+
+REFORNAT SHopping list for round icon and recipe title at top

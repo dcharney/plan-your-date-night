@@ -95,13 +95,46 @@
             </div>
             <div class="cell save-btn-wrapper">
                 <h3 id="recipe-save-btn" data-id="" data-type="">Save To Recipe Book</h3>
-                <h3 id="save-shop-list" data-id="" data-type="">Update Shopping List</h3>
+                <h3 id="save-shop-btn" data-id="" data-type="">Update Shopping List</h3>
             </div>
         </section>
         <!-- End Modal Section -->
 
         <!-- Shopping List Section -->
         <section id="shopping-section" class="grid-y">
+            <div class="grid-container shopping-container">
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell">
+                        <h1>Shopping List</h1>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x grid-padding-y">
+                    <div class="cell auto shopping-list-container">
+                        <div class="card meal-shopping-card">
+                            <div class="card-section grid-x shopping-header">
+                                <div class="cell auto"><img class="shopping-image" src="https://www.themealdb.com/images/media/meals/ssrrrs1503664277.jpg"/></div>
+                                <h2 class="recipe-title cell large-8">Beef Sunday Roast</h2>
+                            </div>
+                            <div class="card-section">
+                                <ul id="shopping-list">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell auto shopping-list-container">
+                        <div class="card drink-shopping-card">
+                            <div class="card-section grid-x shopping-header">
+                                <div class="cell auto shopping-image"><img class="shopping-image" src="https://www.thecocktaildb.com/images/media/drink/ysqvqp1461867292.jpg"/></div>
+                                <h2 class="recipe-title cell large-8">A midsummernight dream</h2>
+                            </div>
+                            <div class="card-section">
+                                <ul id="shopping-list">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Inserting bg image -->
             <div class="bg-img-wrapper">
@@ -115,19 +148,19 @@
             <div class="grid-container recipes-container">
                 <div class="grid-x grid-padding-x grid-padding-y">
                     <div class="cell">
-                        <h1>Recipe Results</h1>
+                        <h1>Recipe Book</h1>
                     </div>
                 </div>
                 <div class="recipes-wrapper grid-x grid-padding-x grid-padding-y">
                     <div class="cell large-6 medium-6 small-12 recipes-container">
-                        <h2> Food</h2>
+                        <h2>Meals Saved</h2>
                         <div class="grid-container-fluid scroll-wrapper">
                             <div id="meal-recipes" class="grid-x recipes">
                             </div>
                         </div>
                     </div>
                     <div class="cell large-6 medium-6 small-12 recipes-container">
-                        <h2> Drink</h2>
+                        <h2>Drinks Saved</h2>
                         <div class="grid-container-fluid scroll-wrapper">
                             <div id="drink-recipes" class="grid-x recipes">
                             </div>
