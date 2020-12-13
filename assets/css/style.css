@@ -50,6 +50,7 @@ header {
 header h1 {
     font-size: 30px;
     padding: 30px;
+    font-weight: bold;
 }
 
 header h2 {
@@ -80,7 +81,7 @@ header h2 a:hover {
 }
 
 .search-section h1 {
-    padding-top: 250px;
+    padding-top: 35vh;
     font-size: 50px;
     font-weight: bold;
 }
@@ -111,15 +112,28 @@ header h2 a:hover {
     position: relative;
 }
 
-.search-section form #suggestions-wrapper {
+.search-section #suggestions-wrapper {
     border-radius: 20px;
     width: 300px;
     background-color: rgb(176 176 176 / 45%);
-    max-height: 40vh;
+    max-height: 30vh;
     overflow: auto;
 }
 
-.search-section form #suggestions-wrapper ul {
+/*.search-section #suggestions-wrapper::-webkit-scrollbar {
+    display: revert !important;
+}
+
+.search-section #suggestions-wrapper::-webkit-scrollbar-track {
+    background-color: rgba(128, 128, 128, 0.6);
+    height: 10%;
+}
+
+.search-section #suggestions-wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.6);
+}*/
+
+.search-section #suggestions-wrapper ul {
     list-style: none;
     position: inherit !important;
     top: 0 !important;
@@ -130,11 +144,11 @@ header h2 a:hover {
     margin: 0px;
 }
 
-.search-section form #suggestions-wrapper ul li {
+.search-section #suggestions-wrapper ul li {
     padding: 5px 0 5px 10px;
 }
 
-.search-section form #suggestions-wrapper ul li:hover {
+.search-section #suggestions-wrapper ul li:hover {
     background-color: rgb(176 176 176 / 45%);
     border-radius: 20px;
     cursor: pointer;
@@ -369,7 +383,7 @@ header h2 a:hover {
 }
 
 #shopping-section h2 {
-    font-size
+    /*font-size*/
 }
 
 .shopping-container {
@@ -443,11 +457,6 @@ header h2 a:hover {
     justify-content: center;
 }
 
-#recipe-section h1 {
-    text-align: center;
-
-}
-
 #recipe-section h2 {
     margin-left: .5vw;
 }
@@ -459,27 +468,104 @@ header h2 a:hover {
 
 /* Media Queries */
 
-@media screen and (max-width: 39.9375em) {
 
 
-}
+/* styles for everything below 1200px width */
+@media screen and (max-width: 1200px) {
+    #recipe-book-btn {
+        width: 20%;
+    }
 
-@media screen and (max-width: 63.9375em) {
-
-}
-
-@media screen and (max-width: 640px) {
-    #search-section h1 {
-        color: red;
+    .search-section h1 {
+        padding-top: 35vh;
+        font-size: 50px;
+        font-weight: bold;
     }
 
 }
-@media screen and (max-width: 768px) {
 
-}
 @media screen and (max-width: 992px) {
 
-}
-@media screen and (max-width: 1200px) {
+    /* header media queries */
+    #recipe-book-btn {
+        width: 25%;
+    }
 
+    header h1, header h2 {
+        font-size: 20px;
+    }
+    /* end header media queries */
+}
+
+@media screen and (max-width: 768px) {
+
+    /* header media queries */
+    header h1, header h2 {
+        font-size: 20px;
+    }
+
+    header h2 {
+        padding: 30px 15px;
+    }
+
+    #shopping-btn {
+        width: 25%;
+    }
+    /* end header media queries */
+}
+
+@media screen and (max-width: 640px) {
+
+    /* header media queries */
+    header h1, header h2 {
+        width: auto;
+        font-size: 15px;
+    }
+    /*end header media queries */
+
+    /* search section media queries */
+    .search-section h1 {
+        font-size: 40px;
+    }
+
+    .search-section form input.search,
+    .search-section #suggestions-wrapper,
+    .search-section #suggestions-wrapper ul {
+        width: 250px;
+        font-size: 15px;
+    }
+    /* end search section media queries */
+
+
+    /* results media queries */
+    #section-header {
+        margin-top: 5vh;
+    }
+
+    .recipes-wrapper {
+        max-width: 360px;
+        height: 80%;
+        display: grid;
+        grid-row: 2fr;
+        width: 80%;
+    }
+
+    .recipes-container {
+        justify-content: center;
+        height: 95%;
+    }
+
+    .scroll-wrapper {
+        max-width: 300px;
+    }
+
+
+
+
+    /* end results media queries */
+
+
+    /* recipe media queries */
+
+    /* end recipe media queries */
 }
