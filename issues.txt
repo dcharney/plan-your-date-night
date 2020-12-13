@@ -1,12 +1,5 @@
 To Do:
 
-option bar only appears on second opening (drink and recipe book)
-meal not displaying correctly
-
-Add Selection to shopping list display
-
-finish presentation
-
 add footer and contact Section
 
 scrolling (white bar at bottom)
@@ -20,17 +13,25 @@ add click circle indicator function to toggle meal and drink submission
 highlight selected suggestion when using arrow keys to select
 
 cut off content from api and add a ...see more button
-limit length of text div and turn into scroll box
-
-drinks media queries
-
-scroll glitch after first search is submitted
-
-errors in console on deployed app
 
 reformat instructions into proper list
 add a span after x num character and then hide/unhide that class when see more is selected
 
 add left right arrows when modal selected
 
+
+change shopping list text if item already in list
+
+
+
+
+complete
 REFORNAT SHopping list for round icon and recipe title at top
+drinks media queries
+scroll glitch after first search is submitted
+errors in console on deployed app
+limit length of text div and turn into scroll box
+Add Selection to shopping list display
+option bar only appears on second opening (drink and recipe book)
+meal not displaying correctly
+

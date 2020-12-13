@@ -79,7 +79,7 @@ var submitHandler = function(event) {
 
     // check if current submission is valid
     if (!searchEl.val() || searchEl.val() == " ") {
-        console.log("please enter a valid search term");
+        searchEl.attr("placeholder","Invalid search, please try again.");
         return;
     }
 
@@ -93,7 +93,7 @@ var submitHandler = function(event) {
 
         // clear input and update placeholder
         searchEl.val("");
-        searchEl.attr("placeholder","Search Liquor");
+        searchEl.attr("placeholder","Search Cocktail Ingredient");
 
         // update suggestions array
         prepAutocomplete(drinks);
@@ -115,7 +115,7 @@ var submitHandler = function(event) {
 
         // reset search section
         searchEl.val("");
-        searchEl.attr("placeholder","Search Liquor");
+        searchEl.attr("placeholder","Search Meal Ingredient");
         prepAutocomplete(meals);
         circleIndicatorTwoEl.removeClass("active");
         circleIndicatorOneEl.addClass("active");

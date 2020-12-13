@@ -80,7 +80,7 @@ header h2 a:hover {
 .search-section h1 {
     padding-top: 250px;
     font-size: 50px;
-    font-weight: 100;
+    font-weight: bold;
 }
 
 .search-section form input.search {
@@ -227,7 +227,7 @@ header h2 a:hover {
 
 .modal-title {
     text-align: center;
-    padding: 100px 10px 0px 20px;
+    padding: 100px 10px 0px 10%;
     border-radius: 25px;
 }
 
@@ -261,7 +261,7 @@ header h2 a:hover {
 .save-item-container {
     padding: 5px 75px 20px 75px;
     border-radius: 25px;
-    height: 65vh;
+    height: 55vh;
 }
 
 .save-item-container .cell {
@@ -269,7 +269,7 @@ header h2 a:hover {
 }
 
 #result-highlight-details {
-    padding: 50px;
+    padding: 4vh;
     line-height: 2;
 }
 
@@ -279,7 +279,7 @@ header h2 a:hover {
 }
 
 #instructions {
-    height: 40vh;
+    height: 35vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -296,6 +296,10 @@ header h2 a:hover {
     background-color: rgba(255, 255, 255, 0.6);
 }
 
+#ingredients {
+    margin: 0;
+}
+
 .cell-card {
     border-radius: 25px 0 0 25px;
     align-items: center;
@@ -306,6 +310,9 @@ header h2 a:hover {
 
 .cell-details {
     border-radius: 0 25px 25px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .save-btn-wrapper {
@@ -316,6 +323,31 @@ header h2 a:hover {
     border-radius: 25px;
     border: none;
     cursor: pointer;
+}
+
+#recipe-save-btn,
+#save-shop-btn {
+    padding: .5em;
+    border: 1px #ddd solid;
+    background: linear-gradient(to right, rgba(80, 80, 80, 0.411),rgba(80, 80, 80, 0.411));
+    background-repeat: no-repeat;
+    background-size: 0 100%;
+    transition: background-size 1s 0s;
+    width: 100%;
+    border-radius: 25px;
+    border:none;
+}
+
+#recipe-save-btn:hover,
+#save-shop-btn:hover {
+    background-size: 100% 100%;
+}
+
+#recipe-save-btn:active,
+#save-shop-btn:active {
+    background: linear-gradient(to right, rgba(99, 173, 130, 0.658), rgba(99, 173, 130, 0.658));
+    background-size: 0 100%;
+    transition: background-size 4s 4s;
 }
 
 /* MODAL SECTION END */
@@ -403,7 +435,7 @@ header h2 a:hover {
 
 #recipe-section h1 {
     text-align: center;
-    font-weight: bold;
+
 }
 
 #recipe-section h2 {
