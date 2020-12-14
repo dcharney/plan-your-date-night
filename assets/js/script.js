@@ -64,6 +64,7 @@ var prepAutocomplete = function(typeArr) {
         autoFocus: true
     });
 }
+
 // END AUTOCOMPLETE //
 
 
@@ -284,7 +285,7 @@ var recipeClicked = function(event) {
                 })
             } else {
                 console.log("no good baby");
-            }  
+            }
         });
 }
 
@@ -363,9 +364,6 @@ var saveRecipe = function(event) {
     }
 
     // populate to recipe book right away 
-<<<<<<< HEAD
-    populateDrinkRecipeBook(name, image, id, addRecipe);
-=======
     updateRecipeBook();
 }
 
@@ -403,7 +401,6 @@ var saveShoppingList = function(event) {
     } else {
         shoppingSelection[1] = recipeData;
     };
->>>>>>> feature/code-cleanup
 
     // push to local storage
     localStorage.setItem('shoppingSelection', JSON.stringify(shoppingSelection));
