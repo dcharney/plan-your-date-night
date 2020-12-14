@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css'/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Plan Your Date Night</title>
 </head>
@@ -12,28 +14,29 @@
 <body>
     <header>
         <div class="grid-x">
-            <h1 class="cell small-9"><a href="#search-section">Plan Your Date Night</a></h1>
-            <h2 id="recipe-book-btn" class="cell small-3"><a href="#recipe-section">Recipe Book</a></h2>
+            <h1 class="cell auto"><a href="#search-section">Plan Your Date Night</a></h1>
+            <h2 id="shopping-btn" class="cell large-3 medium-3"><a href="#shopping-section">Shopping List</a></h2>
+            <h2 id="recipe-book-btn" class="cell large-2 medium-3"><a href="#recipe-section">Recipe Book</a></h2>
         </div>
     </header>
 
     <main>
         <!-- Search Section -->
         <section id="search-section" class="grid-y search-section">
+
             <h1> Find Recipes </h1>
-            <form id="search-form" class="grid-y">
-                <input id="protein-search" class="search active" name="protein" type="text" autofocus="true"
-                    placeholder="Search Meal Ingredient" />
-                <input id="liquor-search" class="search" name="liquor" type="text" placeholder="Search Liquor" />
-                <input type="submit" style="display: none;"></button>
+            <form autocomplete="off" id="search-form" class="grid-y">
+                <input id="search-input" class="search active" name="searchTerm" type="text" autofocus="true"
+                placeholder="Search Meal Ingredient" />
                 <!-- Wrapper to append the suggestions ul element -->
                 <div id="suggestions-wrapper"></div>
-                <!-- Circle indicator that swaps to corresponding input searchbar -->
+                <!-- Circle indicator that swaps to corresponding input searchbar (meal vs. drink search) -->
                 <div class="grid-x circle-indicator-wrapper">
                     <div id="circle-indicator-1" class="cell small-2 circle-indicator active"></div>
                     <div id="circle-indicator-2" class="cell small-2 circle-indicator"></div>
                 </div>
             </form>
+
             <!-- Inserting bg image -->
             <div class="bg-img-wrapper">
                 <img src="./assets/images/search-bg.png">
@@ -42,24 +45,24 @@
 
         <!-- Results Section -->
         <section id="results-section" class="grid-y">
-            <div class="grid-container result-container">
-                <div class="grid-x grid-padding-x grid-padding-y">
+            <div class="grid-container recipes-container">
+                <div id="section-header" class="grid-x grid-padding-x grid-padding-y">
                     <div class="cell">
                         <h1>Recipe Results</h1>
                     </div>
                 </div>
-                <div id="food-drink-wrapper-id" class="food-drinks-wrapper grid-x grid-padding-x grid-padding-y">
-                    <div class="cell large-6 medium-6 small-12 result-container meal-results-container">
+                <div class="recipes-wrapper grid-x grid-padding-x grid-padding-y">
+                    <div class="cell large-6 medium-6 small-12 recipes-container">
                         <h2> Food</h2>
-                        <div class="grid-container-fluid scroll-wrapper meal-results-scroller">
-                            <div id="meal-results" class="grid-x results">
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="meal-results" class="grid-x recipes">
                             </div>
                         </div>
                     </div>
-                    <div class="cell large-6 medium-6 small-12 result-container drink-results-container">
+                    <div class="cell large-6 medium-6 small-12 recipes-container">
                         <h2> Drink</h2>
-                        <div class="grid-container-fluid scroll-wrapper drink-results-scroller">
-                            <div id="drink-results" class="grid-x results">
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="drink-results" class="grid-x recipes">
                             </div>
                         </div>
                     </div>
@@ -73,52 +76,30 @@
         </section>
         <!-- End Results Section -->
 
-        <!-- Food Highlight Section -->
-        <section id="meal-modal" class="modal grid-y large reveal">
+        <!-- Modal Section -->
+        <section id="result-modal" class="grid-y large reveal">
             <div class="cell modal-title">
-                <h1 id="meal-name">Insert Food Name</h1>
-                <button class="close-button" data-close aria-label="Close modal" type="button">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="save-item-container cell-container cell grid-x">
-                <div class="cell cell-card large-4">
-                    <div class="circular-image" id="meal-highlight-img">
-                        <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" />
-                    </div>
-                     </div>
-                <div class="cell cell-details large-8" id="meal-highlight-details"> Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit. Dolor vero aut delectus magni dolorum, molestiae cumque?</div>
-            </div>
-            <div class="cell save-btn-wrapper">
-                <h3 data-mealId="" id="meal-save-btn">Save To Recipe Book</h3>
-                <h3 data-mealId="" id="meal-save-shop-list">Update Shopping List</h3>
-            </div>
-        </section>
-
-        <!-- Drink Highlight Section -->
-        <section id="drink-modal" class="modal grid-y large reveal" data-reveal>
-            <div class="cell modal-title">
-                <h1 id="drink-name">Insert Drink Name</h1>
+                <h1 id="result-name">Insert Result Name</h1>
                 <button class="close-button" data-close aria-label="Close modal" type="button">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="save-item-container grid-x">
                 <div class="cell cell-card large-4">
-                    <div class="circular-image" id="drink-highlight-img">
-                    </div>
+                    <div class="circular-image" id="result-highlight-img"></div>
+                    <a id="source" href="">Link to Recipe</a>
                 </div>
-                <div class="cell cell-details large-8" id="drink-highlight-details">
-                    Insert Drink Data
+                <div class="cell cell-details large-8" id="result-highlight-details">
+                    <p id="instructions">Instructions</p>
+                    <p id="ingredients">Ingredients</p>
                 </div>
             </div>
             <div class="cell save-btn-wrapper">
-                <h3 data-drinkId="" id="save-btn">Save To Recipe Book</h3>
-                <h3 data-drinkId="" id="drink-save-shop-list">Update Shopping List</h3>
+                <h3 id="recipe-save-btn" data-id="" data-type="">Save To Recipe Book</h3>
+                <h3 id="save-shop-btn" data-id="" data-type="">Update Shopping List</h3>
             </div>
         </section>
-        <!--end of results-->
+        <!-- End Modal Section -->
 
         <!-- Shopping List Section -->
         <section id="shopping-section" class="grid-y">
@@ -129,33 +110,27 @@
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x grid-padding-y">
-                    <div class="cell large-6 recipe-container shop-list-wrapper">
-                        <h2> Meals</h2>
-                        <div class="grid-container-fluid scroll-wrapper">
-                            <div id="meals-shopping" class="grid-x results">
-                                <div class="cell result-cell" id="">
-                                    <h5 id="meal-name-shopping"></h5>
-                                    <ul id="meal-ul-shopping">
-                                    </ul>
-                                    <div class="bg-img-wrapper-small">
-                                        <img id="meal-shopping-img">
-                                    </div>
-                                </div>
+                    <div class="cell auto shopping-list-container">
+                        <div class="card meal-shopping-card">
+                            <div class="card-section grid-x shopping-header">
+                                <div class="cell auto"><img class="shopping-image" src=""/></div>
+                                <h2 class="recipe-title cell large-8"></h2>
+                            </div>
+                            <div class="card-section">
+                                <ul id="shopping-list">
+                                </ul>
                             </div>
                         </div>
-                    </div>    
-                    <div class="cell large-6 recipe-container shop-list-wrapper">
-                        <h2> Drinks</h2>
-                        <div class="grid-container-fluid scroll-wrapper">
-                            <div id="drinks-shopping" class="grid-x results">
-                                <div class="cell result-cell" id="">
-                                    <h5 id="drink-name-shopping"></h5>
-                                    <ul id="drink-ul-shopping">
-                                    </ul>
-                                    <div class="bg-img-wrapper-small">
-                                        <img id="drink-shopping-img">
-                                    </div>
-                                </div>
+                    </div>
+                    <div class="cell auto shopping-list-container">
+                        <div class="card drink-shopping-card">
+                            <div class="card-section grid-x shopping-header">
+                                <div class="cell auto shopping-image"><img class="shopping-image" src=""/></div>
+                                <h2 class="recipe-title cell large-8"></h2>
+                            </div>
+                            <div class="card-section">
+                                <ul id="shopping-list">
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -171,24 +146,24 @@
 
         <!-- Recipe Book Section -->
         <section id="recipe-section" class="grid-y">
-            <div class="grid-container result-container">
+            <div class="grid-container recipes-container">
                 <div class="grid-x grid-padding-x grid-padding-y">
                     <div class="cell">
                         <h1>Recipe Book</h1>
                     </div>
                 </div>
-                <div class="grid-x grid-padding-x grid-padding-y recipe-wrapper">
-                    <div class="cell large-6 medium-6 small-12 meal-recipe-container">
-                        <h2> Foods Saved</h2>
+                <div class="recipes-wrapper grid-x grid-padding-x grid-padding-y">
+                    <div class="cell large-6 medium-6 small-12 recipes-container">
+                        <h2>Meals Saved</h2>
                         <div class="grid-container-fluid scroll-wrapper">
-                            <div id="meals-saved" class="grid-x results">
+                            <div id="meal-recipes" class="grid-x recipes">
                             </div>
                         </div>
-                    </div>        
-                    <div class="cell large-6 medium-6 small-12 recipe-container drink-recipe-container">
-                        <h2> Drinks Saved</h2>
-                        <div class="grid-container-fluid scroll-wrapper drink-recipe-scroller">
-                            <div id="drinks-saved" class="grid-x results">
+                    </div>
+                    <div class="cell large-6 medium-6 small-12 recipes-container">
+                        <h2>Drinks Saved</h2>
+                        <div class="grid-container-fluid scroll-wrapper">
+                            <div id="drink-recipes" class="grid-x recipes">
                             </div>
                         </div>
                     </div>
