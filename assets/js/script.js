@@ -139,7 +139,7 @@ var generateResults = function(typeArr, searchTerm) {
     var indexSearchURL = typeArr.indexSearchURL;
 
     // clear any existing result data from previous searches
-    var recipeContainerId = "#" + typeArr.type.toLowerCase() + "-result";
+    var recipeContainerId = "#" + typeArr.type.toLowerCase() + "-results";
     var typeEl = $(recipeContainerId);
     typeEl.html("");
     

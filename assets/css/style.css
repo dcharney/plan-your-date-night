@@ -263,7 +263,7 @@ header h2 a:hover {
 
 .modal-title {
     text-align: center;
-    padding: 100px 10px 0px 10%;
+    padding: 10vh 10px 0px 10%;
     border-radius: 25px;
 }
 
@@ -276,6 +276,11 @@ header h2 a:hover {
     margin: 84px 25px 30px 25px;
     display: flex;
     justify-content: center;
+}
+
+.close-button {
+    right: 3rem;
+    top: 3rem;
 }
 
 #source {
@@ -392,10 +397,6 @@ header h2 a:hover {
 /* SHOPPING SECTION START */
 #shopping-section {
     justify-content: center;
-}
-
-#shopping-section h2 {
-    /*font-size*/
 }
 
 .shopping-container {
@@ -522,6 +523,21 @@ header h2 a:hover {
         font-size: 1.5rem;
     }
     /* end shopping list */
+
+    /* modal */
+    #result-name {
+        font-size: 40px;
+    }
+
+    #result-modal p {
+        font-size: 14px;
+    }
+
+    #result-modal h3 {
+        font-size: 25px;
+    }
+
+    /* end modal */
 }
 
 @media screen and (max-width: 768px) {
@@ -577,6 +593,36 @@ header h2 a:hover {
         margin: auto 5%;
     }
     /* end results */
+
+    /* modal */
+    .save-item-container {
+        flex-flow: column wrap;
+        height: auto;
+    }
+
+    .save-item-container .cell {
+        width: 100%;
+    }
+
+    .circular-image {
+        width: 25%;
+        margin: 2vh;
+    }
+
+    #img-container {
+        display: flex;
+        flex-direction: row;
+        border-radius: 25px 25px 0 0;
+    }
+
+    #instructions {
+        height: 20vh;
+    }
+
+    #result-highlight-details {
+        border-radius: 0 0 25px 25px;
+    }
+    /* end modal */
 }
 
 @media screen and (max-width: 640px) {
@@ -608,7 +654,7 @@ header h2 a:hover {
     }
 
     #section-header {
-        margin-top: 10vh;
+        margin-top: 8vh;
     }
     /* end results */
 
@@ -638,7 +684,30 @@ header h2 a:hover {
     /* end shopping list */
 
 
-    /* recipe media queries */
+    /* modal */
+    #result-name {
+        font-size: 30px;
+    }
 
-    /* end recipe media queries */
+    .save-item-container {
+        padding: 1vh 5vw;
+    }
+
+    #result-highlight-details {
+        padding: 2vh;
+        padding-top: 0;
+    }
+
+    #result-highlight-details p {
+        font-size: 12px;
+    }
+
+    #img-container a {
+        font-size: 12px;
+    }
+
+    #result-modal h3 {
+        font-size: 15px;
+    }
+    /* end modal */
 }
