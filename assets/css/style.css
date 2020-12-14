@@ -491,6 +491,12 @@ header h2 a:hover {
         padding: 3%;
     }
     /* end results */
+
+    /* shopping list */
+    .shopping-container {
+        width: 80vw;
+    }
+    /* end shopping list */
 }
 
 @media screen and (max-width: 992px) {
@@ -510,6 +516,12 @@ header h2 a:hover {
         width: 50% !important;
     }
     /* end results */
+
+    /* shopping list */
+    .recipe-title {
+        font-size: 1.5rem;
+    }
+    /* end shopping list */
 }
 
 @media screen and (max-width: 768px) {
@@ -527,6 +539,17 @@ header h2 a:hover {
         width: 25%;
     }
     /* end header */
+
+    /* shopping list */
+    .recipe-title {
+        font-size: 1.2rem;
+    }
+
+    #shopping-list li {
+        font-size: inherit ;
+    }
+    /* end shopping list */
+
 
     /* results */
     .type-container {
@@ -587,11 +610,32 @@ header h2 a:hover {
     #section-header {
         margin-top: 10vh;
     }
-
-
-
-
     /* end results */
+
+    /* shopping list */
+    .shopping-list-container {
+        width: 100% !important;
+        height: 40vh;
+    }
+
+    .shopping-container {
+        width: 80%;
+        margin: auto 10%;
+    }
+
+    .shopping-card-wrapper {
+        flex-direction: column;
+        height: 80vh;
+    }
+
+    .meal-shopping-card {
+        max-height: 37vh;
+    }
+
+    #shopping-list {
+        height: 20vh;
+    }
+    /* end shopping list */
 
 
     /* recipe media queries */
