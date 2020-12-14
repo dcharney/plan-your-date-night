@@ -177,7 +177,7 @@ var generateRecipeElement = function(section, typeArr, recipeData) {
     var h6 = document.createElement("h6");
 
     // add classes needed to elements
-    $(cellDiv).addClass("cell large-4 recipe-cell");
+    $(cellDiv).addClass("cell large-4 medium-4 small-6 recipe-cell");
     $(h6Div).addClass("recipe-bg");
     $(h6).addClass("recipe");
 
