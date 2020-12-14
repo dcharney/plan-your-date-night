@@ -139,7 +139,7 @@ var generateResults = function(typeArr, searchTerm) {
     var indexSearchURL = typeArr.indexSearchURL;
 
     // clear any existing result data from previous searches
-    var recipeContainerId = "#" + typeArr.type.toLowerCase() + "-result";
+    var recipeContainerId = "#" + typeArr.type.toLowerCase() + "-results";
     var typeEl = $(recipeContainerId);
     typeEl.html("");
     
@@ -177,7 +177,7 @@ var generateRecipeElement = function(section, typeArr, recipeData) {
     var h6 = document.createElement("h6");
 
     // add classes needed to elements
-    $(cellDiv).addClass("cell large-4 recipe-cell");
+    $(cellDiv).addClass("cell large-4 medium-4 small-6 recipe-cell");
     $(h6Div).addClass("recipe-bg");
     $(h6).addClass("recipe");
 

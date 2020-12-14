@@ -52,14 +52,14 @@
                     </div>
                 </div>
                 <div class="recipes-wrapper grid-x grid-padding-x grid-padding-y">
-                    <div class="cell large-6 medium-6 small-12 recipes-container">
+                    <div class="cell large-6 medium-6 small-12 type-container">
                         <h2> Food</h2>
                         <div class="grid-container-fluid scroll-wrapper">
                             <div id="meal-results" class="grid-x recipes">
                             </div>
                         </div>
                     </div>
-                    <div class="cell large-6 medium-6 small-12 recipes-container">
+                    <div class="cell large-6 medium-6 small-12 type-container">
                         <h2> Drink</h2>
                         <div class="grid-container-fluid scroll-wrapper">
                             <div id="drink-results" class="grid-x recipes">
@@ -85,11 +85,11 @@
                 </button>
             </div>
             <div class="save-item-container grid-x">
-                <div class="cell cell-card large-4">
+                <div id="img-container" class="cell cell-card large-4 medium-4">
                     <div class="circular-image" id="result-highlight-img"></div>
-                    <a id="source" href="">Link to Recipe</a>
+                    <div><a id="source" href="">Link to Recipe</a></div>
                 </div>
-                <div class="cell cell-details large-8" id="result-highlight-details">
+                <div class="cell cell-details large-8 medium-8" id="result-highlight-details">
                     <p id="instructions">Instructions</p>
                     <p id="ingredients">Ingredients</p>
                 </div>
@@ -104,17 +104,17 @@
         <!-- Shopping List Section -->
         <section id="shopping-section" class="grid-y">
             <div class="grid-container shopping-container">
-                <div class="grid-x grid-padding-x grid-padding-y">
+                <div id="section-header" class="grid-x grid-padding-x grid-padding-y">
                     <div class="cell">
                         <h1>Shopping List</h1>
                     </div>
                 </div>
-                <div class="grid-x grid-padding-x grid-padding-y">
+                <div class="shopping-card-wrapper grid-x grid-padding-x grid-padding-y">
                     <div class="cell auto shopping-list-container">
                         <div class="card meal-shopping-card">
                             <div class="card-section grid-x shopping-header">
                                 <div class="cell auto"><img class="shopping-image" src=""/></div>
-                                <h2 class="recipe-title cell large-8"></h2>
+                                <h2 class="recipe-title cell large-8 medium-8 small-8"></h2>
                             </div>
                             <div class="card-section">
                                 <ul id="shopping-list">
@@ -126,7 +126,7 @@
                         <div class="card drink-shopping-card">
                             <div class="card-section grid-x shopping-header">
                                 <div class="cell auto shopping-image"><img class="shopping-image" src=""/></div>
-                                <h2 class="recipe-title cell large-8"></h2>
+                                <h2 class="recipe-title cell large-8 large-8 medium-8 small-8"></h2>
                             </div>
                             <div class="card-section">
                                 <ul id="shopping-list">
@@ -147,20 +147,20 @@
         <!-- Recipe Book Section -->
         <section id="recipe-section" class="grid-y">
             <div class="grid-container recipes-container">
-                <div class="grid-x grid-padding-x grid-padding-y">
+                <div id="section-header" class="grid-x grid-padding-x grid-padding-y">
                     <div class="cell">
                         <h1>Recipe Book</h1>
                     </div>
                 </div>
                 <div class="recipes-wrapper grid-x grid-padding-x grid-padding-y">
-                    <div class="cell large-6 medium-6 small-12 recipes-container">
+                    <div class="cell large-6 medium-6 small-12 type-container">
                         <h2>Meals Saved</h2>
                         <div class="grid-container-fluid scroll-wrapper">
                             <div id="meal-recipes" class="grid-x recipes">
                             </div>
                         </div>
                     </div>
-                    <div class="cell large-6 medium-6 small-12 recipes-container">
+                    <div class="cell large-6 medium-6 small-12 type-container">
                         <h2>Drinks Saved</h2>
                         <div class="grid-container-fluid scroll-wrapper">
                             <div id="drink-recipes" class="grid-x recipes">

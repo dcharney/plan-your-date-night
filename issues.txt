@@ -2,8 +2,6 @@ To Do:
 
 add footer and contact Section
 
-scrolling (white bar at bottom)
-
 automatic enter when suggestion clicked?
 
 Recipe Book grow animation on hover
@@ -19,10 +17,13 @@ add a span after x num character and then hide/unhide that class when see more i
 
 add left right arrows when modal selected
 
-
 change shopping list text if item already in list
 
+better api
 
+resize bg image proportionally
+
+media queries for different viewing HEIGHTS
 
 
 complete
@@ -34,4 +35,6 @@ limit length of text div and turn into scroll box
 Add Selection to shopping list display
 option bar only appears on second opening (drink and recipe book)
 meal not displaying correctly
+scrolling (white bar at bottom)
+
 
