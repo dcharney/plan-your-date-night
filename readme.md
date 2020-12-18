@@ -1,6 +1,6 @@
 # Plan Your Date Night
 
-https://michaeldevelopscode.github.io/plan-your-date-night/
+https://dcharney.github.io/plan-your-date-night/
 
 Plan Your Date Night is a web application that can help take the guesswork out of planning an impressive meal and cocktail pairing for your date. Following a series of short prompts, the user can generate a full meal and drink pairing and get the tools necessary for shopping and preparing their night. 
 
